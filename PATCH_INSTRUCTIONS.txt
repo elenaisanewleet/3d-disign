@@ -1,0 +1,21 @@
+WORKSHOP DOSSIER v1.0 — UPDATE FROM v0.5
+
+Этот patch рассчитан на существующий репозиторий, где уже лежит v0.5 (126 фото).
+Он содержит:
+- обновленные index.html, manifest.json, claude_design_brief.md, README.md;
+- 67 новых оригиналов (пачки 07–13);
+- 67 новых thumbnails;
+- 7 новых contact sheets.
+
+1. Распакуйте ZIP ПОВЕРХ корня существующего репозитория:
+   unzip -o workshop_dossier_v1.0_patch.zip -d /path/to/your/repo
+
+2. Проверьте:
+   git status
+
+3. Закоммитьте и отправьте:
+   git add .
+   git commit -m "Complete workshop source dossier v1.0"
+   git push
+
+После push Vercel должен автоматически подхватить обновление, если проект уже связан с этим GitHub-репозиторием.
