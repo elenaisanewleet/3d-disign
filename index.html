@@ -1,0 +1,1476 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Мастерская папы — source dossier v0.5</title>
+<style>
+:root{--paper:#f4f1e8;--ink:#171714;--muted:#6f6b62;--line:#d9d3c5;--wood:#b9854f;--deep:#26231f;--card:#fbfaf5;--accent:#5d6a50}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit} .wrap{max-width:1500px;margin:0 auto;padding:0 28px} .topnav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow:auto;padding:12px 24px;background:rgba(244,241,232,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)} .topnav a{white-space:nowrap;text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:7px 12px;background:#fff9}
+.hero{min-height:88vh;display:grid;grid-template-columns:1.02fr .98fr;gap:0;border-bottom:1px solid var(--line)} .hero-copy{padding:72px max(28px,calc((100vw - 1500px)/2 + 28px));padding-right:56px;display:flex;flex-direction:column;justify-content:center} .hero-image{min-height:650px;background:url('assets/reference/preferred-01-high-ceiling-windows.png') center/cover no-repeat}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700} h1{font-size:clamp(48px,6.5vw,104px);line-height:.92;letter-spacing:-.055em;margin:18px 0 24px;max-width:780px} .lead{font-size:clamp(18px,2vw,28px);max-width:730px;color:#3e3a34} .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px} .pill{font-size:13px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:#fff8}
+section{padding:88px 0;border-bottom:1px solid var(--line)} .section-head{display:grid;grid-template-columns:minmax(220px,.55fr) 1.45fr;gap:40px;margin-bottom:38px} h2{font-size:clamp(32px,4vw,64px);letter-spacing:-.04em;line-height:1;margin:0} .section-intro{font-size:18px;color:var(--muted);max-width:850px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px} .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px} .card h3{margin:0 0 10px;font-size:20px} .card p{margin:0;color:#4f4a42} .quote{font-size:clamp(19px,2.1vw,30px);white-space:pre-wrap;background:var(--deep);color:#f5f0e5;border-radius:22px;padding:32px;line-height:1.45}
+.ref-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px} .ref-card{margin:0;background:#111;border-radius:18px;overflow:hidden;position:relative;min-height:300px} .ref-card img{width:100%;height:100%;object-fit:cover;display:block} .ref-card figcaption{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(20,20,18,.78);color:white;padding:10px 12px;border-radius:10px;font-size:13px;backdrop-filter:blur(8px)}
+.note-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px} .note-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px} .note-card .batch{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)} .note-card h3{font-size:24px;margin:8px 0 14px} .note-card ul{padding-left:20px;margin:0} .note-card li+li{margin-top:9px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0} .tag{font-size:12px;border-radius:999px;padding:6px 9px;background:#ebe7dc} .tag.confirmed{background:#e5ece1} .tag.inference{background:#efe6d3} .tag.user{background:#e2e6f0}
+.batch-block{margin:48px 0 72px} .batch-header{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;align-items:end;margin-bottom:16px} .batch-header h3{font-size:30px;margin:0} .contact{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:white;margin:18px 0} .contact img{display:block;width:100%;height:auto}
+.photo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px} .photo-card{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden} .photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .2s ease} .photo-card:hover img{transform:scale(1.015)} .photo-card figcaption{display:flex;justify-content:space-between;gap:8px;padding:8px 9px;font-size:11px;color:#4d4942} .photo-card small{color:#8a847a}
+.curated-section{margin-bottom:58px} .curated-section h3{font-size:28px;margin:0 0 14px} .controls{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px} .controls button{border:1px solid var(--line);border-radius:999px;background:#fff;padding:8px 12px;cursor:pointer} .controls button.active{background:var(--deep);color:#fff}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px} .dos,.donts{padding:28px;border-radius:18px} .dos{background:#e7ece1} .donts{background:#eee6dd} .dos h3,.donts h3{margin-top:0} .cleanlist{margin:0;padding-left:20px} .cleanlist li+li{margin-top:8px}
+pre.prompt{white-space:pre-wrap;margin:0;font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#171714;color:#f2eee5;padding:28px;border-radius:18px;overflow:auto}
+footer{padding:42px 0 80px;color:var(--muted);font-size:14px}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-image{min-height:65vh;order:-1}.hero-copy{padding:44px 28px 60px}.section-head,.batch-header,.grid2,.split{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.ref-grid{grid-template-columns:1fr 1fr}.ref-grid .ref-card:first-child{grid-column:1/-1}.photo-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.wrap{padding:0 16px}section{padding:60px 0}.grid3,.note-grid,.ref-grid{grid-template-columns:1fr}.photo-grid{grid-template-columns:repeat(2,1fr)}.hero-image{min-height:50vh}h1{font-size:52px}}
+</style></head><body><nav class="topnav"><a href="#brief">Бриф</a><a href="#references">Референс</a><a href="#analysis">Анализ</a><a href="#batches">Пачки</a><a href="#curated">Категории</a><a href="#archive">Все фото</a><a href="#claude">Claude / 3D</a></nav>
+<header class="hero"><div class="hero-copy"><div class="kicker">WORKSHOP DIGITAL TWIN · SOURCE DOSSIER V0.5</div><h1>Не придумать новую мастерскую. Перестроить его.</h1><p class="lead">Фотобаза реальной мастерской + инвентарь + выводы о работе мастера + единый бриф на 3D-реконструкцию. Первый пакет неполный: пользователь отправила примерно половину фотобазы.</p><div class="meta"><span class="pill">126 исходных фото</span><span class="pill">6 пачек</span><span class="pill">3 AI-референса</span><span class="pill">source of truth: реальные инструменты</span></div></div><div class="hero-image" aria-label="Главный референс будущей мастерской"></div></header>
+
+<section id="brief"><div class="wrap"><div class="section-head"><h2>Исходная идея</h2><div class="section-intro">Это не публичный лендинг мастерской, а рабочее досье для Claude Design / 3D. Главная задача — не потерять ни один реальный объект и при этом полностью изменить архитектурную оболочку пространства.</div></div><div class="quote">Так я отфоткала всю мастерскую папину по деталям с разных ракурсов — всё, что у него есть: детали, коробки, инструменты, станки, разметки, а для вайба ещё картину и книги.
+
+Задача серьёзная: тщательно проанализировать фотографии и понять задачу мастера — что он делает, что может делать, какая у него основная работа, функции, исключительные особенности и таланты.
+
+Дальше мы делаем фотографии мастерской через ИИ, потому что реальную мастерскую я не хочу показывать в её нынешнем состоянии. Стены, пол, потолок, обшарпанность — меняем.
+
+При этом сохраняем ВСЕ рабочие элементы: железки, инструменты, детали, станки. Сами инструменты и станки — максимально точная перерисовка/копия по форме и модели, просто чистые, понятные, детализированные, как новые. Меняем именно интерьер.
+
+Хочу мастерскую мечты для папы: как лучшие швейцарские мастерские — уютную, просторную, дорогую по качеству исполнения. Светлые стены, высокий потолок, много больших окон и дневного света, аккуратные ящички и контейнеры, светильники, цветы, книги, больше воздуха и уюта.
+
+Но почерк мастера должен сохраниться. Картину и книги оставить те же. Сумку с котом оставить. Ножницы/круглый объект на стене хочу превратить в узнаваемый центральный знак — чуть чище и красивее, но аутентичный.
+
+По сути мы создаём почти 3D-визуализацию мастерской с определением деятельности и возможностей мастера. Все будущие кадры должны быть из одной и той же мастерской, а не десятью несвязанными AI-интерьерами.</div></div></section>
+
+<section id="references"><div class="wrap"><div class="section-head"><h2>Референс направления</h2><div class="section-intro">Именно это направление пользователь выбрала после неудачных более тёмных/неуютных вариантов: больше объёма, окон и натурального света; высокий потолок; спокойное светлое дерево; растения; ощущение дорогого швейцарского качества строительства.</div></div><div class="ref-grid"><figure class="ref-card"><img src="assets/reference/preferred-01-high-ceiling-windows.png" alt="AI reference"><figcaption>Главный референс: высокий потолок, много окон, естественный свет, светлое дерево, простор.</figcaption></figure><figure class="ref-card"><img src="assets/reference/preferred-02-consistent-scene.png" alt="AI reference"><figcaption>Второй референс: та же архитектурная логика, спокойный дорогой цех, рабочие зоны остаются рабочими.</figcaption></figure><figure class="ref-card"><img src="assets/reference/preferred-03-cozy-tools-plants.png" alt="AI reference"><figcaption>Третий референс: больше домашнего тепла, растений и личных деталей; использовать дозированно, без декоративности.</figcaption></figure></div><div class="split" style="margin-top:26px"><div class="dos"><h3>Сохранить из реальной мастерской</h3><ul class="cleanlist"><li>геометрию станков и самодельных узлов;</li><li>реальные типы мебельной фурнитуры и крепежа;</li><li>стену пил и характерные измерительные инструменты;</li><li>весы, тиски, рабочие столы как функции;</li><li>личные узнаваемые маркеры — сумка с котом, книги, картина, круглый настенный знак;</li><li>ощущение рабочего, прожитого места.</li></ul></div><div class="donts"><h3>Полностью заменить</h3><ul class="cleanlist"><li>обшарпанные стены/пол/потолок;</li><li>старую открытую проводку и случайные удлинители;</li><li>рваные коробки, тазы и хаотичную тару;</li><li>случайное хранение материалов;</li><li>грязь, пыль, ржавчину и визуальный шум;</li><li>низкое качество света и тесноту.</li></ul></div></div></div></section>
+
+<section id="analysis"><div class="wrap"><div class="section-head"><h2>Что видно по работе мастера</h2><div class="section-intro">Ниже отделены подтверждённый контекст, наблюдаемая фотобаза и осторожные гипотезы. Для 3D это важно: не превращать визуальную гипотезу в выдуманный бизнес-процесс.</div></div><div class="card" style="font-size:18px;white-space:pre-wrap">По совокупности фотографий и контекста это выглядит не как мастерская одного типа операции, а как компактное ремесленно-производственное пространство вокруг мебельной фурнитуры. В нём совмещаются хранение больших партий крепежа, подбор и сборка узлов, сверление/прессование, шлифовка и заточка, точный распил дерева, ручная подгонка, измерение и, вероятно, комплектование/фасовка деталей.
+
+Наиболее сильная рабочая гипотеза — мастер умеет не только установить готовую фурнитуру, но и адаптировать, дорабатывать или собирать мебельные узлы и небольшие металлические компоненты под задачу. Отдельно заметна способность работать по образцу: выбрать крепёж, подготовить отверстия, зафиксировать деталь, обработать её, собрать узел и повторить операцию серией.
+
+Подтверждённый пользователем контекст: основная специализация отца — мебельная фурнитура; иногда он также перепродаёт/дорабатывает мебель, добавляя или меняя детали. Всё, что выше этого утверждения, на лендинге помечается как визуальный вывод или гипотеза, а не как установленный факт.</div><div class="legend"><span class="tag confirmed">Факт с фотографии / от пользователя</span><span class="tag inference">Рабочая гипотеза</span><span class="tag user">Обязательное пожелание пользователя</span></div><div class="grid3" style="margin-top:22px"><div class="card"><h3>Работа с фурнитурой</h3><p>Большие партии крепежа, петель, пластин, шпилек, гаек, шарнирных механизмов и одинаковых узлов.</p></div><div class="card"><h3>Мелкосерийная обработка</h3><p>Сверление/прессование, фиксация в тисках, повторяемые операции, точная ручная подгонка.</p></div><div class="card"><h3>Дерево + металл</h3><p>Торцовочная пила, ручные пилы, панели/фанера и параллельно металлические детали, шлифовка и заточка.</p></div><div class="card"><h3>Ремонт / адаптация</h3><p>Набор инструментов и разнородная оснастка позволяют работать по образцу и дорабатывать нестандартные мебельные узлы.</p></div><div class="card"><h3>Комплектование</h3><p>Весы, упаковочная лента, партии и подписи на коробках выглядят как участок фасовки/комплектации. Это гипотеза.</p></div><div class="card"><h3>Сильный авторский почерк</h3><p>Самодельные рабочие узлы, ручная организация инструмента и личные детали создают характер, который нельзя «стерилизовать».</p></div></div></div></section>
+
+<section id="batches"><div class="wrap"><div class="section-head"><h2>Заметки после каждой пачки</h2><div class="section-intro">Пачки восстановлены по времени загрузки файлов. Каждая карточка — консолидированная запись наблюдений, которую мы делали по мере поступления фотографий.</div></div><div class="note-grid"><article class="note-card"><div class="batch">Пачка 01 · 29 фото</div><h3>Станки, оснастка и повторяемая обработка</h3><ul><li>Видна небольшая производственная ячейка, а не просто бытовой гараж: несколько вертикальных станков/прессов, тиски, оснастка и большие партии одинакового крепежа.</li><li>Повторяемость одинаковых деталей и оснастка указывают на мелкосерийную обработку: сверление, посадка/прессование, подгонка и ручная доводка.</li><li>Серийные партии саморезов, шпилек, гаек и металлических заготовок организованы по типам и размерам; мастер работает не с единичной случайной фурнитурой.</li><li>Табурет/стул сам по себе не используется как доказательство производимой продукции — это часть мастерской.</li></ul></article><article class="note-card"><div class="batch">Пачка 02 · 27 фото</div><h3>Крепёж, весы, упаковка и торцовочная зона</h3><ul><li>Есть отдельный участок измерения/фасовки: торговые весы CAS со стойкой-индикатором, упаковочная лента, рулоны/бумага, рукописные ценники и тара.</li><li>Это похоже на взвешивание, комплектование или продажу фурнитуры партиями. Это рабочая гипотеза, а не установленный факт.</li><li>Жёлтая торцовочная/усовочная пила и крупные партии чёрных саморезов усиливают версию регулярной работы с деревом: точный распил, сборка каркасов/мебельных элементов.</li><li>На стене — длинные уровни/линейки и круглые диски; эту стену стоит сохранить как узнаваемый визуальный мотив.</li></ul></article><article class="note-card"><div class="batch">Пачка 03 · 10 фото</div><h3>Шарниры, петли, кронштейны и механизмы</h3><ul><li>Видны крупные партии мебельной металлической фурнитуры: петли, шарнирные механизмы, кронштейны, перфорированные профили/пластины и поворотные соединения.</li><li>Часть деталей явно рассчитана на повторяющуюся сборку/монтаж, а не на единичный ремонт.</li><li>Точное назначение отдельных шарнирных элементов по фотографии не фиксируется: в 3D важнее сохранить геометрию и группировку, не придумывая функцию.</li></ul></article><article class="note-card"><div class="batch">Пачка 04 · 20 фото</div><h3>Пространство, ручной инструмент и силовая инфраструктура</h3><ul><li>Появляется полноценная карта мастерской: рабочая комната со станками и соседняя складско-бытовая зона; между ними дверь/проход.</li><li>Есть старая силовая инфраструктура 220/380 В, открытая проводка, кабели и настенные электроточки. В реконструкции функцию сохраняем, но исполнение делаем безопасным и премиальным.</li><li>Ручной инструмент очень разнообразный: ключи, ножовки и пилы, плоскогубцы, молотки, отвёртки, струбцины, напильники, штангенциркуль/измерительный инструмент, угольники.</li><li>Есть тиски и небольшая координатная/машинная струбцина; это подтверждает ручную фиксацию и точную подгонку деталей.</li><li>Хранятся обрезки плит/фанеры/МДФ и деревянные заготовки — мастер работает и с мебельными материалами, не только с готовым крепежом.</li></ul></article><article class="note-card"><div class="batch">Пачка 05 · 10 фото</div><h3>Монтажные пластины, партии деталей и общий вид</h3><ul><li>Сильная повторяющаяся деталь — квадратная монтажная пластина с четырьмя отверстиями и центральным резьбовым штифтом/головкой. На фото видны большие партии одинаковых элементов.</li><li>В сочетании с M8, шпильками и прессовой/сверлильной оснасткой это усиливает гипотезу о сборке или изготовлении мебельных опор/ножек/узлов крепления. Это вероятная функция, но не подтверждённое название изделия.</li><li>Коробки с рукописной маркировкой партий и количества — важный след реального производственного процесса; в новой мастерской это лучше превратить в аккуратную систему маркированных деревянных/металлических ящиков.</li><li>Телевизор/экран и рабочая одежда — вторичные, но узнаваемые бытовые детали мастерской.</li></ul></article><article class="note-card"><div class="batch">Пачка 06 · 30 фото</div><h3>Заточка, пилы, хранение, зона отдыха и личные маркеры</h3><ul><li>Отдельно виден двухсторонний точильно-шлифовальный станок и самодельная ременная/роликовая установка с электродвигателем — мастер не только собирает, но и затачивает/шлифует/доводит детали и инструмент.</li><li>Стена с набором ручных пил и ножовок — сильный характерный объект. В новой мастерской инструменты должны остаться теми же по форме, но стать чистыми и хорошо читаемыми.</li><li>Складская комната содержит стеллажи, коробки, мешки, длинномерные материалы и большой запас фурнитуры; это нужно преобразовать в полноценную зону хранения, а не удалить.</li><li>Зона отдыха с диваном показывает, что мастерская — прожитое личное пространство, не стерильный цех. В реконструкции можно оставить спокойный угол для отдыха/книг, но убрать случайную ветхость.</li><li>Чёрная сумка с котом — персональный узнаваемый маркер. Пользователь отдельно попросила обязательно сохранить её в будущей визуализации.</li><li>В наборе есть старая электрика, удлинители и кабельные бухты; в премиальной версии их следует организовать в аккуратные трассы/шкафы, сохранив функциональность.</li></ul></article></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 01</div><h3>Станки, оснастка и повторяемая обработка</h3></div><div class="section-intro">29 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_1.jpg" alt="Контакт-лист пачки 1"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_001_CCB055BD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_001_CCB055BD.jpg" alt="Фото мастерской B01 · 001 · CCB055BD"></a>
+<figcaption><span>B01 · 001 · CCB055BD</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_002_BDB19ABC.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_002_BDB19ABC.jpg" alt="Фото мастерской B01 · 002 · BDB19ABC"></a>
+<figcaption><span>B01 · 002 · BDB19ABC</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_003_17063E3A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_003_17063E3A.jpg" alt="Фото мастерской B01 · 003 · 17063E3A"></a>
+<figcaption><span>B01 · 003 · 17063E3A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_004_D9F9DDD0.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_004_D9F9DDD0.jpg" alt="Фото мастерской B01 · 004 · D9F9DDD0"></a>
+<figcaption><span>B01 · 004 · D9F9DDD0</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_005_E1CE29E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_005_E1CE29E1.jpg" alt="Фото мастерской B01 · 005 · E1CE29E1"></a>
+<figcaption><span>B01 · 005 · E1CE29E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_006_0253B4F5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_006_0253B4F5.jpg" alt="Фото мастерской B01 · 006 · 0253B4F5"></a>
+<figcaption><span>B01 · 006 · 0253B4F5</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_007_25DAB68C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_007_25DAB68C.jpg" alt="Фото мастерской B01 · 007 · 25DAB68C"></a>
+<figcaption><span>B01 · 007 · 25DAB68C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_008_EA6FE10E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_008_EA6FE10E.jpg" alt="Фото мастерской B01 · 008 · EA6FE10E"></a>
+<figcaption><span>B01 · 008 · EA6FE10E</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_009_415F2B30.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_009_415F2B30.jpg" alt="Фото мастерской B01 · 009 · 415F2B30"></a>
+<figcaption><span>B01 · 009 · 415F2B30</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_010_61F8C63C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_010_61F8C63C.jpg" alt="Фото мастерской B01 · 010 · 61F8C63C"></a>
+<figcaption><span>B01 · 010 · 61F8C63C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_011_2757DB73.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_011_2757DB73.jpg" alt="Фото мастерской B01 · 011 · 2757DB73"></a>
+<figcaption><span>B01 · 011 · 2757DB73</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_012_5AB93153.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_012_5AB93153.jpg" alt="Фото мастерской B01 · 012 · 5AB93153"></a>
+<figcaption><span>B01 · 012 · 5AB93153</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_013_A1906A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_013_A1906A59.jpg" alt="Фото мастерской B01 · 013 · A1906A59"></a>
+<figcaption><span>B01 · 013 · A1906A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_014_B057C312.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_014_B057C312.jpg" alt="Фото мастерской B01 · 014 · B057C312"></a>
+<figcaption><span>B01 · 014 · B057C312</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_015_B3F95DCF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_015_B3F95DCF.jpg" alt="Фото мастерской B01 · 015 · B3F95DCF"></a>
+<figcaption><span>B01 · 015 · B3F95DCF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_016_0571D3EA.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_016_0571D3EA.jpg" alt="Фото мастерской B01 · 016 · 0571D3EA"></a>
+<figcaption><span>B01 · 016 · 0571D3EA</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_017_84F2F59F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_017_84F2F59F.jpg" alt="Фото мастерской B01 · 017 · 84F2F59F"></a>
+<figcaption><span>B01 · 017 · 84F2F59F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_018_1B72F3E9.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_018_1B72F3E9.jpg" alt="Фото мастерской B01 · 018 · 1B72F3E9"></a>
+<figcaption><span>B01 · 018 · 1B72F3E9</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_019_41A4E542.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_019_41A4E542.jpg" alt="Фото мастерской B01 · 019 · 41A4E542"></a>
+<figcaption><span>B01 · 019 · 41A4E542</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_020_935E4B08.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_020_935E4B08.jpg" alt="Фото мастерской B01 · 020 · 935E4B08"></a>
+<figcaption><span>B01 · 020 · 935E4B08</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_021_F6DF324A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_021_F6DF324A.jpg" alt="Фото мастерской B01 · 021 · F6DF324A"></a>
+<figcaption><span>B01 · 021 · F6DF324A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_022_4624F144.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_022_4624F144.jpg" alt="Фото мастерской B01 · 022 · 4624F144"></a>
+<figcaption><span>B01 · 022 · 4624F144</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_023_7F02C7E8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_023_7F02C7E8.jpg" alt="Фото мастерской B01 · 023 · 7F02C7E8"></a>
+<figcaption><span>B01 · 023 · 7F02C7E8</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_024_540F4F04.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_024_540F4F04.jpg" alt="Фото мастерской B01 · 024 · 540F4F04"></a>
+<figcaption><span>B01 · 024 · 540F4F04</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_025_F83A493F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_025_F83A493F.jpg" alt="Фото мастерской B01 · 025 · F83A493F"></a>
+<figcaption><span>B01 · 025 · F83A493F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_026_C2EC9DF6.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_026_C2EC9DF6.jpg" alt="Фото мастерской B01 · 026 · C2EC9DF6"></a>
+<figcaption><span>B01 · 026 · C2EC9DF6</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_027_DA604520.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_027_DA604520.jpg" alt="Фото мастерской B01 · 027 · DA604520"></a>
+<figcaption><span>B01 · 027 · DA604520</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_028_B78448E3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_028_B78448E3.jpg" alt="Фото мастерской B01 · 028 · B78448E3"></a>
+<figcaption><span>B01 · 028 · B78448E3</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_029_0DBF242F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_029_0DBF242F.jpg" alt="Фото мастерской B01 · 029 · 0DBF242F"></a>
+<figcaption><span>B01 · 029 · 0DBF242F</span><small>1152×1536</small></figcaption>
+</figure>
+</div></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 02</div><h3>Крепёж, весы, упаковка и торцовочная зона</h3></div><div class="section-intro">27 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_2.jpg" alt="Контакт-лист пачки 2"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_001_46FDE935.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_001_46FDE935.jpg" alt="Фото мастерской B02 · 001 · 46FDE935"></a>
+<figcaption><span>B02 · 001 · 46FDE935</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_002_7B45C5BD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_002_7B45C5BD.jpg" alt="Фото мастерской B02 · 002 · 7B45C5BD"></a>
+<figcaption><span>B02 · 002 · 7B45C5BD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_003_837A3C62.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_003_837A3C62.jpg" alt="Фото мастерской B02 · 003 · 837A3C62"></a>
+<figcaption><span>B02 · 003 · 837A3C62</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_004_3A866211.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_004_3A866211.jpg" alt="Фото мастерской B02 · 004 · 3A866211"></a>
+<figcaption><span>B02 · 004 · 3A866211</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_005_3318F922.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_005_3318F922.jpg" alt="Фото мастерской B02 · 005 · 3318F922"></a>
+<figcaption><span>B02 · 005 · 3318F922</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_006_B50E6C01.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_006_B50E6C01.jpg" alt="Фото мастерской B02 · 006 · B50E6C01"></a>
+<figcaption><span>B02 · 006 · B50E6C01</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_007_60A76598.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_007_60A76598.jpg" alt="Фото мастерской B02 · 007 · 60A76598"></a>
+<figcaption><span>B02 · 007 · 60A76598</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_008_CDA29BF0.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_008_CDA29BF0.jpg" alt="Фото мастерской B02 · 008 · CDA29BF0"></a>
+<figcaption><span>B02 · 008 · CDA29BF0</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_009_5D8CDC75.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_009_5D8CDC75.jpg" alt="Фото мастерской B02 · 009 · 5D8CDC75"></a>
+<figcaption><span>B02 · 009 · 5D8CDC75</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_010_7A429BDD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_010_7A429BDD.jpg" alt="Фото мастерской B02 · 010 · 7A429BDD"></a>
+<figcaption><span>B02 · 010 · 7A429BDD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_011_2B3D5D41.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_011_2B3D5D41.jpg" alt="Фото мастерской B02 · 011 · 2B3D5D41"></a>
+<figcaption><span>B02 · 011 · 2B3D5D41</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_012_E6DE87F5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_012_E6DE87F5.jpg" alt="Фото мастерской B02 · 012 · E6DE87F5"></a>
+<figcaption><span>B02 · 012 · E6DE87F5</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_013_776F0C80.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_013_776F0C80.jpg" alt="Фото мастерской B02 · 013 · 776F0C80"></a>
+<figcaption><span>B02 · 013 · 776F0C80</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_014_8FB92F39.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_014_8FB92F39.jpg" alt="Фото мастерской B02 · 014 · 8FB92F39"></a>
+<figcaption><span>B02 · 014 · 8FB92F39</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_015_0E857C6B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_015_0E857C6B.jpg" alt="Фото мастерской B02 · 015 · 0E857C6B"></a>
+<figcaption><span>B02 · 015 · 0E857C6B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_016_496EB122.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_016_496EB122.jpg" alt="Фото мастерской B02 · 016 · 496EB122"></a>
+<figcaption><span>B02 · 016 · 496EB122</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_017_C45EE92C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_017_C45EE92C.jpg" alt="Фото мастерской B02 · 017 · C45EE92C"></a>
+<figcaption><span>B02 · 017 · C45EE92C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_018_3CAC8EA4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_018_3CAC8EA4.jpg" alt="Фото мастерской B02 · 018 · 3CAC8EA4"></a>
+<figcaption><span>B02 · 018 · 3CAC8EA4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_019_4DD7119D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_019_4DD7119D.jpg" alt="Фото мастерской B02 · 019 · 4DD7119D"></a>
+<figcaption><span>B02 · 019 · 4DD7119D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_020_CC79E0E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_020_CC79E0E1.jpg" alt="Фото мастерской B02 · 020 · CC79E0E1"></a>
+<figcaption><span>B02 · 020 · CC79E0E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_021_C0689729.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_021_C0689729.jpg" alt="Фото мастерской B02 · 021 · C0689729"></a>
+<figcaption><span>B02 · 021 · C0689729</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_022_750333F4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_022_750333F4.jpg" alt="Фото мастерской B02 · 022 · 750333F4"></a>
+<figcaption><span>B02 · 022 · 750333F4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_023_BD18E2AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_023_BD18E2AE.jpg" alt="Фото мастерской B02 · 023 · BD18E2AE"></a>
+<figcaption><span>B02 · 023 · BD18E2AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_024_1AC19EF7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_024_1AC19EF7.jpg" alt="Фото мастерской B02 · 024 · 1AC19EF7"></a>
+<figcaption><span>B02 · 024 · 1AC19EF7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_025_9744D353.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_025_9744D353.jpg" alt="Фото мастерской B02 · 025 · 9744D353"></a>
+<figcaption><span>B02 · 025 · 9744D353</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_026_A6F959AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_026_A6F959AE.jpg" alt="Фото мастерской B02 · 026 · A6F959AE"></a>
+<figcaption><span>B02 · 026 · A6F959AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_027_AA943DA3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_027_AA943DA3.jpg" alt="Фото мастерской B02 · 027 · AA943DA3"></a>
+<figcaption><span>B02 · 027 · AA943DA3</span><small>1152×1536</small></figcaption>
+</figure>
+</div></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 03</div><h3>Шарниры, петли, кронштейны и механизмы</h3></div><div class="section-intro">10 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_3.jpg" alt="Контакт-лист пачки 3"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_001_F8C2811D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_001_F8C2811D.jpg" alt="Фото мастерской B03 · 001 · F8C2811D"></a>
+<figcaption><span>B03 · 001 · F8C2811D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_002_4A6F3FA5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_002_4A6F3FA5.jpg" alt="Фото мастерской B03 · 002 · 4A6F3FA5"></a>
+<figcaption><span>B03 · 002 · 4A6F3FA5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_003_6C852AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_003_6C852AC4.jpg" alt="Фото мастерской B03 · 003 · 6C852AC4"></a>
+<figcaption><span>B03 · 003 · 6C852AC4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_004_BE2D72C6.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_004_BE2D72C6.jpg" alt="Фото мастерской B03 · 004 · BE2D72C6"></a>
+<figcaption><span>B03 · 004 · BE2D72C6</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_005_019FCF9C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_005_019FCF9C.jpg" alt="Фото мастерской B03 · 005 · 019FCF9C"></a>
+<figcaption><span>B03 · 005 · 019FCF9C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_006_C3C379B8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_006_C3C379B8.jpg" alt="Фото мастерской B03 · 006 · C3C379B8"></a>
+<figcaption><span>B03 · 006 · C3C379B8</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_007_44F935EE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_007_44F935EE.jpg" alt="Фото мастерской B03 · 007 · 44F935EE"></a>
+<figcaption><span>B03 · 007 · 44F935EE</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_008_6DC3567F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_008_6DC3567F.jpg" alt="Фото мастерской B03 · 008 · 6DC3567F"></a>
+<figcaption><span>B03 · 008 · 6DC3567F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_009_B95E989D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_009_B95E989D.jpg" alt="Фото мастерской B03 · 009 · B95E989D"></a>
+<figcaption><span>B03 · 009 · B95E989D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_010_21E031A2.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_010_21E031A2.jpg" alt="Фото мастерской B03 · 010 · 21E031A2"></a>
+<figcaption><span>B03 · 010 · 21E031A2</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 04</div><h3>Пространство, ручной инструмент и силовая инфраструктура</h3></div><div class="section-intro">20 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_4.jpg" alt="Контакт-лист пачки 4"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_001_57648A56.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_001_57648A56.jpg" alt="Фото мастерской B04 · 001 · 57648A56"></a>
+<figcaption><span>B04 · 001 · 57648A56</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_002_3B0F8297.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_002_3B0F8297.jpg" alt="Фото мастерской B04 · 002 · 3B0F8297"></a>
+<figcaption><span>B04 · 002 · 3B0F8297</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_003_8C0C38BB.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_003_8C0C38BB.jpg" alt="Фото мастерской B04 · 003 · 8C0C38BB"></a>
+<figcaption><span>B04 · 003 · 8C0C38BB</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_004_80504575.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_004_80504575.jpg" alt="Фото мастерской B04 · 004 · 80504575"></a>
+<figcaption><span>B04 · 004 · 80504575</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_005_5545DD9A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_005_5545DD9A.jpg" alt="Фото мастерской B04 · 005 · 5545DD9A"></a>
+<figcaption><span>B04 · 005 · 5545DD9A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_006_65789627.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_006_65789627.jpg" alt="Фото мастерской B04 · 006 · 65789627"></a>
+<figcaption><span>B04 · 006 · 65789627</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_007_FE1CC100.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_007_FE1CC100.jpg" alt="Фото мастерской B04 · 007 · FE1CC100"></a>
+<figcaption><span>B04 · 007 · FE1CC100</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_008_FBDAFA35.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_008_FBDAFA35.jpg" alt="Фото мастерской B04 · 008 · FBDAFA35"></a>
+<figcaption><span>B04 · 008 · FBDAFA35</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_009_524382FE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_009_524382FE.jpg" alt="Фото мастерской B04 · 009 · 524382FE"></a>
+<figcaption><span>B04 · 009 · 524382FE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_010_ABCEB74A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_010_ABCEB74A.jpg" alt="Фото мастерской B04 · 010 · ABCEB74A"></a>
+<figcaption><span>B04 · 010 · ABCEB74A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_011_F068FDB7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_011_F068FDB7.jpg" alt="Фото мастерской B04 · 011 · F068FDB7"></a>
+<figcaption><span>B04 · 011 · F068FDB7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_012_4DAF0B05.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_012_4DAF0B05.jpg" alt="Фото мастерской B04 · 012 · 4DAF0B05"></a>
+<figcaption><span>B04 · 012 · 4DAF0B05</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_013_9CA573FF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_013_9CA573FF.jpg" alt="Фото мастерской B04 · 013 · 9CA573FF"></a>
+<figcaption><span>B04 · 013 · 9CA573FF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_014_50EE4965.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_014_50EE4965.jpg" alt="Фото мастерской B04 · 014 · 50EE4965"></a>
+<figcaption><span>B04 · 014 · 50EE4965</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_015_13D31E9B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_015_13D31E9B.jpg" alt="Фото мастерской B04 · 015 · 13D31E9B"></a>
+<figcaption><span>B04 · 015 · 13D31E9B</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_016_EB6F1443.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_016_EB6F1443.jpg" alt="Фото мастерской B04 · 016 · EB6F1443"></a>
+<figcaption><span>B04 · 016 · EB6F1443</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_017_EB83A19B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_017_EB83A19B.jpg" alt="Фото мастерской B04 · 017 · EB83A19B"></a>
+<figcaption><span>B04 · 017 · EB83A19B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_018_C84A75B3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_018_C84A75B3.jpg" alt="Фото мастерской B04 · 018 · C84A75B3"></a>
+<figcaption><span>B04 · 018 · C84A75B3</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_019_0B8ED4E7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_019_0B8ED4E7.jpg" alt="Фото мастерской B04 · 019 · 0B8ED4E7"></a>
+<figcaption><span>B04 · 019 · 0B8ED4E7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_020_53C6705E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_020_53C6705E.jpg" alt="Фото мастерской B04 · 020 · 53C6705E"></a>
+<figcaption><span>B04 · 020 · 53C6705E</span><small>1152×1536</small></figcaption>
+</figure>
+</div></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 05</div><h3>Монтажные пластины, партии деталей и общий вид</h3></div><div class="section-intro">10 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_5.jpg" alt="Контакт-лист пачки 5"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_001_C39E3A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_001_C39E3A59.jpg" alt="Фото мастерской B05 · 001 · C39E3A59"></a>
+<figcaption><span>B05 · 001 · C39E3A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_002_1CDD3576.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_002_1CDD3576.jpg" alt="Фото мастерской B05 · 002 · 1CDD3576"></a>
+<figcaption><span>B05 · 002 · 1CDD3576</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_003_18B77ACF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_003_18B77ACF.jpg" alt="Фото мастерской B05 · 003 · 18B77ACF"></a>
+<figcaption><span>B05 · 003 · 18B77ACF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_004_BA7A0C64.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_004_BA7A0C64.jpg" alt="Фото мастерской B05 · 004 · BA7A0C64"></a>
+<figcaption><span>B05 · 004 · BA7A0C64</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_005_E70F2B91.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_005_E70F2B91.jpg" alt="Фото мастерской B05 · 005 · E70F2B91"></a>
+<figcaption><span>B05 · 005 · E70F2B91</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_006_43198AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_006_43198AC4.jpg" alt="Фото мастерской B05 · 006 · 43198AC4"></a>
+<figcaption><span>B05 · 006 · 43198AC4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_007_A7D3C667.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_007_A7D3C667.jpg" alt="Фото мастерской B05 · 007 · A7D3C667"></a>
+<figcaption><span>B05 · 007 · A7D3C667</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_008_A0A9AC55.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_008_A0A9AC55.jpg" alt="Фото мастерской B05 · 008 · A0A9AC55"></a>
+<figcaption><span>B05 · 008 · A0A9AC55</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_009_FA26143F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_009_FA26143F.jpg" alt="Фото мастерской B05 · 009 · FA26143F"></a>
+<figcaption><span>B05 · 009 · FA26143F</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_010_2900BEB5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_010_2900BEB5.jpg" alt="Фото мастерской B05 · 010 · 2900BEB5"></a>
+<figcaption><span>B05 · 010 · 2900BEB5</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="batch-block"><div class="batch-header"><div><div class="kicker">BATCH 06</div><h3>Заточка, пилы, хранение, зона отдыха и личные маркеры</h3></div><div class="section-intro">30 фотографий. Контакт-лист ниже даёт Claude быстрый обзор, затем идут все оригиналы этой пачки.</div></div><div class="contact"><img loading="lazy" src="assets/contact/batch_6.jpg" alt="Контакт-лист пачки 6"></div><div class="photo-grid">
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_001_F42F1493.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_001_F42F1493.jpg" alt="Фото мастерской B06 · 001 · F42F1493"></a>
+<figcaption><span>B06 · 001 · F42F1493</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_002_030E677D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_002_030E677D.jpg" alt="Фото мастерской B06 · 002 · 030E677D"></a>
+<figcaption><span>B06 · 002 · 030E677D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_003_D2248DFB.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_003_D2248DFB.jpg" alt="Фото мастерской B06 · 003 · D2248DFB"></a>
+<figcaption><span>B06 · 003 · D2248DFB</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_004_8F41B07D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_004_8F41B07D.jpg" alt="Фото мастерской B06 · 004 · 8F41B07D"></a>
+<figcaption><span>B06 · 004 · 8F41B07D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_005_A87E805B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_005_A87E805B.jpg" alt="Фото мастерской B06 · 005 · A87E805B"></a>
+<figcaption><span>B06 · 005 · A87E805B</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_006_0BEF79ED.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_006_0BEF79ED.jpg" alt="Фото мастерской B06 · 006 · 0BEF79ED"></a>
+<figcaption><span>B06 · 006 · 0BEF79ED</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_007_23B7BB7D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_007_23B7BB7D.jpg" alt="Фото мастерской B06 · 007 · 23B7BB7D"></a>
+<figcaption><span>B06 · 007 · 23B7BB7D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_008_DC662F6A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_008_DC662F6A.jpg" alt="Фото мастерской B06 · 008 · DC662F6A"></a>
+<figcaption><span>B06 · 008 · DC662F6A</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_009_6164D2D5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_009_6164D2D5.jpg" alt="Фото мастерской B06 · 009 · 6164D2D5"></a>
+<figcaption><span>B06 · 009 · 6164D2D5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_010_4AE57B66.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_010_4AE57B66.jpg" alt="Фото мастерской B06 · 010 · 4AE57B66"></a>
+<figcaption><span>B06 · 010 · 4AE57B66</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_011_DC62AD18.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_011_DC62AD18.jpg" alt="Фото мастерской B06 · 011 · DC62AD18"></a>
+<figcaption><span>B06 · 011 · DC62AD18</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_012_CABDBA2A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_012_CABDBA2A.jpg" alt="Фото мастерской B06 · 012 · CABDBA2A"></a>
+<figcaption><span>B06 · 012 · CABDBA2A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_013_E7306B8C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_013_E7306B8C.jpg" alt="Фото мастерской B06 · 013 · E7306B8C"></a>
+<figcaption><span>B06 · 013 · E7306B8C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_014_4BA8AB95.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_014_4BA8AB95.jpg" alt="Фото мастерской B06 · 014 · 4BA8AB95"></a>
+<figcaption><span>B06 · 014 · 4BA8AB95</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_015_86E3EF40.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_015_86E3EF40.jpg" alt="Фото мастерской B06 · 015 · 86E3EF40"></a>
+<figcaption><span>B06 · 015 · 86E3EF40</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_016_3F92BA76.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_016_3F92BA76.jpg" alt="Фото мастерской B06 · 016 · 3F92BA76"></a>
+<figcaption><span>B06 · 016 · 3F92BA76</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_017_24AB74CD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_017_24AB74CD.jpg" alt="Фото мастерской B06 · 017 · 24AB74CD"></a>
+<figcaption><span>B06 · 017 · 24AB74CD</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_018_0D55AF99.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_018_0D55AF99.jpg" alt="Фото мастерской B06 · 018 · 0D55AF99"></a>
+<figcaption><span>B06 · 018 · 0D55AF99</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_019_88877B03.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_019_88877B03.jpg" alt="Фото мастерской B06 · 019 · 88877B03"></a>
+<figcaption><span>B06 · 019 · 88877B03</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_020_E7FC65B8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_020_E7FC65B8.jpg" alt="Фото мастерской B06 · 020 · E7FC65B8"></a>
+<figcaption><span>B06 · 020 · E7FC65B8</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_021_ECEA0E2E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_021_ECEA0E2E.jpg" alt="Фото мастерской B06 · 021 · ECEA0E2E"></a>
+<figcaption><span>B06 · 021 · ECEA0E2E</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_022_40F134A4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_022_40F134A4.jpg" alt="Фото мастерской B06 · 022 · 40F134A4"></a>
+<figcaption><span>B06 · 022 · 40F134A4</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_023_12EC77C7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_023_12EC77C7.jpg" alt="Фото мастерской B06 · 023 · 12EC77C7"></a>
+<figcaption><span>B06 · 023 · 12EC77C7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_024_50603D4A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_024_50603D4A.jpg" alt="Фото мастерской B06 · 024 · 50603D4A"></a>
+<figcaption><span>B06 · 024 · 50603D4A</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_025_B8FD06AD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_025_B8FD06AD.jpg" alt="Фото мастерской B06 · 025 · B8FD06AD"></a>
+<figcaption><span>B06 · 025 · B8FD06AD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_026_B7F26056.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_026_B7F26056.jpg" alt="Фото мастерской B06 · 026 · B7F26056"></a>
+<figcaption><span>B06 · 026 · B7F26056</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_027_7A384291.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_027_7A384291.jpg" alt="Фото мастерской B06 · 027 · 7A384291"></a>
+<figcaption><span>B06 · 027 · 7A384291</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_028_899116AC.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_028_899116AC.jpg" alt="Фото мастерской B06 · 028 · 899116AC"></a>
+<figcaption><span>B06 · 028 · 899116AC</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_029_A4FF54BE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_029_A4FF54BE.jpg" alt="Фото мастерской B06 · 029 · A4FF54BE"></a>
+<figcaption><span>B06 · 029 · A4FF54BE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_030_E341971B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_030_E341971B.jpg" alt="Фото мастерской B06 · 030 · E341971B"></a>
+<figcaption><span>B06 · 030 · E341971B</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div></div></section><section id="curated"><div class="wrap"><div class="section-head"><h2>Разложено по смыслу</h2><div class="section-intro">Это не замена полному архиву, а быстрые подборки для моделлера: где смотреть архитектуру, станки, крепёж, ручной инструмент, хранение и личные детали.</div></div><div class="curated-section"><h3>Архитектура и планировка</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_006_65789627.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_006_65789627.jpg" alt="Фото мастерской B04 · 006 · 65789627"></a>
+<figcaption><span>B04 · 006 · 65789627</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_009_524382FE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_009_524382FE.jpg" alt="Фото мастерской B04 · 009 · 524382FE"></a>
+<figcaption><span>B04 · 009 · 524382FE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_011_F068FDB7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_011_F068FDB7.jpg" alt="Фото мастерской B04 · 011 · F068FDB7"></a>
+<figcaption><span>B04 · 011 · F068FDB7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_021_ECEA0E2E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_021_ECEA0E2E.jpg" alt="Фото мастерской B06 · 021 · ECEA0E2E"></a>
+<figcaption><span>B06 · 021 · ECEA0E2E</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_023_12EC77C7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_023_12EC77C7.jpg" alt="Фото мастерской B06 · 023 · 12EC77C7"></a>
+<figcaption><span>B06 · 023 · 12EC77C7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_024_50603D4A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_024_50603D4A.jpg" alt="Фото мастерской B06 · 024 · 50603D4A"></a>
+<figcaption><span>B06 · 024 · 50603D4A</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_025_B8FD06AD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_025_B8FD06AD.jpg" alt="Фото мастерской B06 · 025 · B8FD06AD"></a>
+<figcaption><span>B06 · 025 · B8FD06AD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_028_899116AC.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_028_899116AC.jpg" alt="Фото мастерской B06 · 028 · 899116AC"></a>
+<figcaption><span>B06 · 028 · 899116AC</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_029_A4FF54BE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_029_A4FF54BE.jpg" alt="Фото мастерской B06 · 029 · A4FF54BE"></a>
+<figcaption><span>B06 · 029 · A4FF54BE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_030_E341971B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_030_E341971B.jpg" alt="Фото мастерской B06 · 030 · E341971B"></a>
+<figcaption><span>B06 · 030 · E341971B</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="curated-section"><h3>Станки и производственные узлы</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_003_17063E3A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_003_17063E3A.jpg" alt="Фото мастерской B01 · 003 · 17063E3A"></a>
+<figcaption><span>B01 · 003 · 17063E3A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_008_EA6FE10E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_008_EA6FE10E.jpg" alt="Фото мастерской B01 · 008 · EA6FE10E"></a>
+<figcaption><span>B01 · 008 · EA6FE10E</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_010_61F8C63C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_010_61F8C63C.jpg" alt="Фото мастерской B01 · 010 · 61F8C63C"></a>
+<figcaption><span>B01 · 010 · 61F8C63C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_011_2757DB73.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_011_2757DB73.jpg" alt="Фото мастерской B01 · 011 · 2757DB73"></a>
+<figcaption><span>B01 · 011 · 2757DB73</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_015_B3F95DCF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_015_B3F95DCF.jpg" alt="Фото мастерской B01 · 015 · B3F95DCF"></a>
+<figcaption><span>B01 · 015 · B3F95DCF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_018_1B72F3E9.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_018_1B72F3E9.jpg" alt="Фото мастерской B01 · 018 · 1B72F3E9"></a>
+<figcaption><span>B01 · 018 · 1B72F3E9</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_021_F6DF324A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_021_F6DF324A.jpg" alt="Фото мастерской B01 · 021 · F6DF324A"></a>
+<figcaption><span>B01 · 021 · F6DF324A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_025_F83A493F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_025_F83A493F.jpg" alt="Фото мастерской B01 · 025 · F83A493F"></a>
+<figcaption><span>B01 · 025 · F83A493F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_010_7A429BDD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_010_7A429BDD.jpg" alt="Фото мастерской B02 · 010 · 7A429BDD"></a>
+<figcaption><span>B02 · 010 · 7A429BDD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_015_0E857C6B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_015_0E857C6B.jpg" alt="Фото мастерской B02 · 015 · 0E857C6B"></a>
+<figcaption><span>B02 · 015 · 0E857C6B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_016_496EB122.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_016_496EB122.jpg" alt="Фото мастерской B02 · 016 · 496EB122"></a>
+<figcaption><span>B02 · 016 · 496EB122</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_001_F42F1493.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_001_F42F1493.jpg" alt="Фото мастерской B06 · 001 · F42F1493"></a>
+<figcaption><span>B06 · 001 · F42F1493</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_003_D2248DFB.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_003_D2248DFB.jpg" alt="Фото мастерской B06 · 003 · D2248DFB"></a>
+<figcaption><span>B06 · 003 · D2248DFB</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_004_8F41B07D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_004_8F41B07D.jpg" alt="Фото мастерской B06 · 004 · 8F41B07D"></a>
+<figcaption><span>B06 · 004 · 8F41B07D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_006_0BEF79ED.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_006_0BEF79ED.jpg" alt="Фото мастерской B06 · 006 · 0BEF79ED"></a>
+<figcaption><span>B06 · 006 · 0BEF79ED</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_007_23B7BB7D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_007_23B7BB7D.jpg" alt="Фото мастерской B06 · 007 · 23B7BB7D"></a>
+<figcaption><span>B06 · 007 · 23B7BB7D</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="curated-section"><h3>Мебельная фурнитура и крепёж</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_005_E1CE29E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_005_E1CE29E1.jpg" alt="Фото мастерской B01 · 005 · E1CE29E1"></a>
+<figcaption><span>B01 · 005 · E1CE29E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_006_0253B4F5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_006_0253B4F5.jpg" alt="Фото мастерской B01 · 006 · 0253B4F5"></a>
+<figcaption><span>B01 · 006 · 0253B4F5</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_009_415F2B30.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_009_415F2B30.jpg" alt="Фото мастерской B01 · 009 · 415F2B30"></a>
+<figcaption><span>B01 · 009 · 415F2B30</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_013_A1906A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_013_A1906A59.jpg" alt="Фото мастерской B01 · 013 · A1906A59"></a>
+<figcaption><span>B01 · 013 · A1906A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_029_0DBF242F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_029_0DBF242F.jpg" alt="Фото мастерской B01 · 029 · 0DBF242F"></a>
+<figcaption><span>B01 · 029 · 0DBF242F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_013_776F0C80.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_013_776F0C80.jpg" alt="Фото мастерской B02 · 013 · 776F0C80"></a>
+<figcaption><span>B02 · 013 · 776F0C80</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_014_8FB92F39.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_014_8FB92F39.jpg" alt="Фото мастерской B02 · 014 · 8FB92F39"></a>
+<figcaption><span>B02 · 014 · 8FB92F39</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_018_3CAC8EA4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_018_3CAC8EA4.jpg" alt="Фото мастерской B02 · 018 · 3CAC8EA4"></a>
+<figcaption><span>B02 · 018 · 3CAC8EA4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_019_4DD7119D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_019_4DD7119D.jpg" alt="Фото мастерской B02 · 019 · 4DD7119D"></a>
+<figcaption><span>B02 · 019 · 4DD7119D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_020_CC79E0E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_020_CC79E0E1.jpg" alt="Фото мастерской B02 · 020 · CC79E0E1"></a>
+<figcaption><span>B02 · 020 · CC79E0E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_022_750333F4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_022_750333F4.jpg" alt="Фото мастерской B02 · 022 · 750333F4"></a>
+<figcaption><span>B02 · 022 · 750333F4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_023_BD18E2AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_023_BD18E2AE.jpg" alt="Фото мастерской B02 · 023 · BD18E2AE"></a>
+<figcaption><span>B02 · 023 · BD18E2AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_024_1AC19EF7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_024_1AC19EF7.jpg" alt="Фото мастерской B02 · 024 · 1AC19EF7"></a>
+<figcaption><span>B02 · 024 · 1AC19EF7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_025_9744D353.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_025_9744D353.jpg" alt="Фото мастерской B02 · 025 · 9744D353"></a>
+<figcaption><span>B02 · 025 · 9744D353</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_026_A6F959AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_026_A6F959AE.jpg" alt="Фото мастерской B02 · 026 · A6F959AE"></a>
+<figcaption><span>B02 · 026 · A6F959AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_027_AA943DA3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_027_AA943DA3.jpg" alt="Фото мастерской B02 · 027 · AA943DA3"></a>
+<figcaption><span>B02 · 027 · AA943DA3</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_001_F8C2811D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_001_F8C2811D.jpg" alt="Фото мастерской B03 · 001 · F8C2811D"></a>
+<figcaption><span>B03 · 001 · F8C2811D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_003_6C852AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_003_6C852AC4.jpg" alt="Фото мастерской B03 · 003 · 6C852AC4"></a>
+<figcaption><span>B03 · 003 · 6C852AC4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_005_019FCF9C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_005_019FCF9C.jpg" alt="Фото мастерской B03 · 005 · 019FCF9C"></a>
+<figcaption><span>B03 · 005 · 019FCF9C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_007_44F935EE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_007_44F935EE.jpg" alt="Фото мастерской B03 · 007 · 44F935EE"></a>
+<figcaption><span>B03 · 007 · 44F935EE</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_008_6DC3567F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_008_6DC3567F.jpg" alt="Фото мастерской B03 · 008 · 6DC3567F"></a>
+<figcaption><span>B03 · 008 · 6DC3567F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_009_B95E989D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_009_B95E989D.jpg" alt="Фото мастерской B03 · 009 · B95E989D"></a>
+<figcaption><span>B03 · 009 · B95E989D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_010_21E031A2.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_010_21E031A2.jpg" alt="Фото мастерской B03 · 010 · 21E031A2"></a>
+<figcaption><span>B03 · 010 · 21E031A2</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_001_C39E3A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_001_C39E3A59.jpg" alt="Фото мастерской B05 · 001 · C39E3A59"></a>
+<figcaption><span>B05 · 001 · C39E3A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_004_BA7A0C64.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_004_BA7A0C64.jpg" alt="Фото мастерской B05 · 004 · BA7A0C64"></a>
+<figcaption><span>B05 · 004 · BA7A0C64</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_005_E70F2B91.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_005_E70F2B91.jpg" alt="Фото мастерской B05 · 005 · E70F2B91"></a>
+<figcaption><span>B05 · 005 · E70F2B91</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_006_43198AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_006_43198AC4.jpg" alt="Фото мастерской B05 · 006 · 43198AC4"></a>
+<figcaption><span>B05 · 006 · 43198AC4</span><small>1152×1536</small></figcaption>
+</figure>
+</div></div><div class="curated-section"><h3>Ручной инструмент</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_007_FE1CC100.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_007_FE1CC100.jpg" alt="Фото мастерской B04 · 007 · FE1CC100"></a>
+<figcaption><span>B04 · 007 · FE1CC100</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_013_9CA573FF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_013_9CA573FF.jpg" alt="Фото мастерской B04 · 013 · 9CA573FF"></a>
+<figcaption><span>B04 · 013 · 9CA573FF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_014_50EE4965.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_014_50EE4965.jpg" alt="Фото мастерской B04 · 014 · 50EE4965"></a>
+<figcaption><span>B04 · 014 · 50EE4965</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_015_13D31E9B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_015_13D31E9B.jpg" alt="Фото мастерской B04 · 015 · 13D31E9B"></a>
+<figcaption><span>B04 · 015 · 13D31E9B</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_016_EB6F1443.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_016_EB6F1443.jpg" alt="Фото мастерской B04 · 016 · EB6F1443"></a>
+<figcaption><span>B04 · 016 · EB6F1443</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_017_EB83A19B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_017_EB83A19B.jpg" alt="Фото мастерской B04 · 017 · EB83A19B"></a>
+<figcaption><span>B04 · 017 · EB83A19B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_019_0B8ED4E7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_019_0B8ED4E7.jpg" alt="Фото мастерской B04 · 019 · 0B8ED4E7"></a>
+<figcaption><span>B04 · 019 · 0B8ED4E7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_020_53C6705E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_020_53C6705E.jpg" alt="Фото мастерской B04 · 020 · 53C6705E"></a>
+<figcaption><span>B04 · 020 · 53C6705E</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_015_86E3EF40.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_015_86E3EF40.jpg" alt="Фото мастерской B06 · 015 · 86E3EF40"></a>
+<figcaption><span>B06 · 015 · 86E3EF40</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_016_3F92BA76.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_016_3F92BA76.jpg" alt="Фото мастерской B06 · 016 · 3F92BA76"></a>
+<figcaption><span>B06 · 016 · 3F92BA76</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_020_E7FC65B8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_020_E7FC65B8.jpg" alt="Фото мастерской B06 · 020 · E7FC65B8"></a>
+<figcaption><span>B06 · 020 · E7FC65B8</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="curated-section"><h3>Хранение, фасовка, электрика</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_003_837A3C62.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_003_837A3C62.jpg" alt="Фото мастерской B02 · 003 · 837A3C62"></a>
+<figcaption><span>B02 · 003 · 837A3C62</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_004_3A866211.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_004_3A866211.jpg" alt="Фото мастерской B02 · 004 · 3A866211"></a>
+<figcaption><span>B02 · 004 · 3A866211</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_005_3318F922.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_005_3318F922.jpg" alt="Фото мастерской B02 · 005 · 3318F922"></a>
+<figcaption><span>B02 · 005 · 3318F922</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_008_CDA29BF0.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_008_CDA29BF0.jpg" alt="Фото мастерской B02 · 008 · CDA29BF0"></a>
+<figcaption><span>B02 · 008 · CDA29BF0</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_012_4DAF0B05.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_012_4DAF0B05.jpg" alt="Фото мастерской B04 · 012 · 4DAF0B05"></a>
+<figcaption><span>B04 · 012 · 4DAF0B05</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_002_1CDD3576.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_002_1CDD3576.jpg" alt="Фото мастерской B05 · 002 · 1CDD3576"></a>
+<figcaption><span>B05 · 002 · 1CDD3576</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_003_18B77ACF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_003_18B77ACF.jpg" alt="Фото мастерской B05 · 003 · 18B77ACF"></a>
+<figcaption><span>B05 · 003 · 18B77ACF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_002_030E677D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_002_030E677D.jpg" alt="Фото мастерской B06 · 002 · 030E677D"></a>
+<figcaption><span>B06 · 002 · 030E677D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_009_6164D2D5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_009_6164D2D5.jpg" alt="Фото мастерской B06 · 009 · 6164D2D5"></a>
+<figcaption><span>B06 · 009 · 6164D2D5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_011_DC62AD18.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_011_DC62AD18.jpg" alt="Фото мастерской B06 · 011 · DC62AD18"></a>
+<figcaption><span>B06 · 011 · DC62AD18</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_013_E7306B8C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_013_E7306B8C.jpg" alt="Фото мастерской B06 · 013 · E7306B8C"></a>
+<figcaption><span>B06 · 013 · E7306B8C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_014_4BA8AB95.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_014_4BA8AB95.jpg" alt="Фото мастерской B06 · 014 · 4BA8AB95"></a>
+<figcaption><span>B06 · 014 · 4BA8AB95</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_018_0D55AF99.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_018_0D55AF99.jpg" alt="Фото мастерской B06 · 018 · 0D55AF99"></a>
+<figcaption><span>B06 · 018 · 0D55AF99</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_030_E341971B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_030_E341971B.jpg" alt="Фото мастерской B06 · 030 · E341971B"></a>
+<figcaption><span>B06 · 030 · E341971B</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div><div class="curated-section"><h3>Личные и узнаваемые детали</h3><div class="photo-grid">
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_017_84F2F59F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_017_84F2F59F.jpg" alt="Фото мастерской B01 · 017 · 84F2F59F"></a>
+<figcaption><span>B01 · 017 · 84F2F59F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_023_7F02C7E8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_023_7F02C7E8.jpg" alt="Фото мастерской B01 · 023 · 7F02C7E8"></a>
+<figcaption><span>B01 · 023 · 7F02C7E8</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_007_A7D3C667.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_007_A7D3C667.jpg" alt="Фото мастерской B05 · 007 · A7D3C667"></a>
+<figcaption><span>B05 · 007 · A7D3C667</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_008_A0A9AC55.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_008_A0A9AC55.jpg" alt="Фото мастерской B05 · 008 · A0A9AC55"></a>
+<figcaption><span>B05 · 008 · A0A9AC55</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_017_24AB74CD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_017_24AB74CD.jpg" alt="Фото мастерской B06 · 017 · 24AB74CD"></a>
+<figcaption><span>B06 · 017 · 24AB74CD</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_019_88877B03.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_019_88877B03.jpg" alt="Фото мастерской B06 · 019 · 88877B03"></a>
+<figcaption><span>B06 · 019 · 88877B03</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_022_40F134A4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_022_40F134A4.jpg" alt="Фото мастерской B06 · 022 · 40F134A4"></a>
+<figcaption><span>B06 · 022 · 40F134A4</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_029_A4FF54BE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_029_A4FF54BE.jpg" alt="Фото мастерской B06 · 029 · A4FF54BE"></a>
+<figcaption><span>B06 · 029 · A4FF54BE</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div></div></section><section id="archive"><div class="wrap"><div class="section-head"><h2>Полный архив</h2><div class="section-intro">Все 126 исходных JPEG-файлов включены без удаления дублей. Это важно: повторные ракурсы помогают восстановить пропорции и геометрию объектов.</div></div><div class="controls"><button class="active" data-filter="all">Все</button><button data-filter="1">Пачка 1</button><button data-filter="2">Пачка 2</button><button data-filter="3">Пачка 3</button><button data-filter="4">Пачка 4</button><button data-filter="5">Пачка 5</button><button data-filter="6">Пачка 6</button></div><div class="photo-grid archive-grid">
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_001_CCB055BD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_001_CCB055BD.jpg" alt="Фото мастерской B01 · 001 · CCB055BD"></a>
+<figcaption><span>B01 · 001 · CCB055BD</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_002_BDB19ABC.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_002_BDB19ABC.jpg" alt="Фото мастерской B01 · 002 · BDB19ABC"></a>
+<figcaption><span>B01 · 002 · BDB19ABC</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_003_17063E3A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_003_17063E3A.jpg" alt="Фото мастерской B01 · 003 · 17063E3A"></a>
+<figcaption><span>B01 · 003 · 17063E3A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_004_D9F9DDD0.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_004_D9F9DDD0.jpg" alt="Фото мастерской B01 · 004 · D9F9DDD0"></a>
+<figcaption><span>B01 · 004 · D9F9DDD0</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_005_E1CE29E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_005_E1CE29E1.jpg" alt="Фото мастерской B01 · 005 · E1CE29E1"></a>
+<figcaption><span>B01 · 005 · E1CE29E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_006_0253B4F5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_006_0253B4F5.jpg" alt="Фото мастерской B01 · 006 · 0253B4F5"></a>
+<figcaption><span>B01 · 006 · 0253B4F5</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_007_25DAB68C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_007_25DAB68C.jpg" alt="Фото мастерской B01 · 007 · 25DAB68C"></a>
+<figcaption><span>B01 · 007 · 25DAB68C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_008_EA6FE10E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_008_EA6FE10E.jpg" alt="Фото мастерской B01 · 008 · EA6FE10E"></a>
+<figcaption><span>B01 · 008 · EA6FE10E</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_009_415F2B30.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_009_415F2B30.jpg" alt="Фото мастерской B01 · 009 · 415F2B30"></a>
+<figcaption><span>B01 · 009 · 415F2B30</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_010_61F8C63C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_010_61F8C63C.jpg" alt="Фото мастерской B01 · 010 · 61F8C63C"></a>
+<figcaption><span>B01 · 010 · 61F8C63C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_011_2757DB73.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_011_2757DB73.jpg" alt="Фото мастерской B01 · 011 · 2757DB73"></a>
+<figcaption><span>B01 · 011 · 2757DB73</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_012_5AB93153.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_012_5AB93153.jpg" alt="Фото мастерской B01 · 012 · 5AB93153"></a>
+<figcaption><span>B01 · 012 · 5AB93153</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_013_A1906A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_013_A1906A59.jpg" alt="Фото мастерской B01 · 013 · A1906A59"></a>
+<figcaption><span>B01 · 013 · A1906A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_014_B057C312.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_014_B057C312.jpg" alt="Фото мастерской B01 · 014 · B057C312"></a>
+<figcaption><span>B01 · 014 · B057C312</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_015_B3F95DCF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_015_B3F95DCF.jpg" alt="Фото мастерской B01 · 015 · B3F95DCF"></a>
+<figcaption><span>B01 · 015 · B3F95DCF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_016_0571D3EA.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_016_0571D3EA.jpg" alt="Фото мастерской B01 · 016 · 0571D3EA"></a>
+<figcaption><span>B01 · 016 · 0571D3EA</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_017_84F2F59F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_017_84F2F59F.jpg" alt="Фото мастерской B01 · 017 · 84F2F59F"></a>
+<figcaption><span>B01 · 017 · 84F2F59F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_018_1B72F3E9.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_018_1B72F3E9.jpg" alt="Фото мастерской B01 · 018 · 1B72F3E9"></a>
+<figcaption><span>B01 · 018 · 1B72F3E9</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_019_41A4E542.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_019_41A4E542.jpg" alt="Фото мастерской B01 · 019 · 41A4E542"></a>
+<figcaption><span>B01 · 019 · 41A4E542</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_020_935E4B08.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_020_935E4B08.jpg" alt="Фото мастерской B01 · 020 · 935E4B08"></a>
+<figcaption><span>B01 · 020 · 935E4B08</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_021_F6DF324A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_021_F6DF324A.jpg" alt="Фото мастерской B01 · 021 · F6DF324A"></a>
+<figcaption><span>B01 · 021 · F6DF324A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_022_4624F144.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_022_4624F144.jpg" alt="Фото мастерской B01 · 022 · 4624F144"></a>
+<figcaption><span>B01 · 022 · 4624F144</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_023_7F02C7E8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_023_7F02C7E8.jpg" alt="Фото мастерской B01 · 023 · 7F02C7E8"></a>
+<figcaption><span>B01 · 023 · 7F02C7E8</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_024_540F4F04.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_024_540F4F04.jpg" alt="Фото мастерской B01 · 024 · 540F4F04"></a>
+<figcaption><span>B01 · 024 · 540F4F04</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_025_F83A493F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_025_F83A493F.jpg" alt="Фото мастерской B01 · 025 · F83A493F"></a>
+<figcaption><span>B01 · 025 · F83A493F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_026_C2EC9DF6.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_026_C2EC9DF6.jpg" alt="Фото мастерской B01 · 026 · C2EC9DF6"></a>
+<figcaption><span>B01 · 026 · C2EC9DF6</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_027_DA604520.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_027_DA604520.jpg" alt="Фото мастерской B01 · 027 · DA604520"></a>
+<figcaption><span>B01 · 027 · DA604520</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_028_B78448E3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_028_B78448E3.jpg" alt="Фото мастерской B01 · 028 · B78448E3"></a>
+<figcaption><span>B01 · 028 · B78448E3</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="1">
+<a href="assets/source/b01_029_0DBF242F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b01_029_0DBF242F.jpg" alt="Фото мастерской B01 · 029 · 0DBF242F"></a>
+<figcaption><span>B01 · 029 · 0DBF242F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_001_46FDE935.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_001_46FDE935.jpg" alt="Фото мастерской B02 · 001 · 46FDE935"></a>
+<figcaption><span>B02 · 001 · 46FDE935</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_002_7B45C5BD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_002_7B45C5BD.jpg" alt="Фото мастерской B02 · 002 · 7B45C5BD"></a>
+<figcaption><span>B02 · 002 · 7B45C5BD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_003_837A3C62.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_003_837A3C62.jpg" alt="Фото мастерской B02 · 003 · 837A3C62"></a>
+<figcaption><span>B02 · 003 · 837A3C62</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_004_3A866211.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_004_3A866211.jpg" alt="Фото мастерской B02 · 004 · 3A866211"></a>
+<figcaption><span>B02 · 004 · 3A866211</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_005_3318F922.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_005_3318F922.jpg" alt="Фото мастерской B02 · 005 · 3318F922"></a>
+<figcaption><span>B02 · 005 · 3318F922</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_006_B50E6C01.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_006_B50E6C01.jpg" alt="Фото мастерской B02 · 006 · B50E6C01"></a>
+<figcaption><span>B02 · 006 · B50E6C01</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_007_60A76598.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_007_60A76598.jpg" alt="Фото мастерской B02 · 007 · 60A76598"></a>
+<figcaption><span>B02 · 007 · 60A76598</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_008_CDA29BF0.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_008_CDA29BF0.jpg" alt="Фото мастерской B02 · 008 · CDA29BF0"></a>
+<figcaption><span>B02 · 008 · CDA29BF0</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_009_5D8CDC75.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_009_5D8CDC75.jpg" alt="Фото мастерской B02 · 009 · 5D8CDC75"></a>
+<figcaption><span>B02 · 009 · 5D8CDC75</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_010_7A429BDD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_010_7A429BDD.jpg" alt="Фото мастерской B02 · 010 · 7A429BDD"></a>
+<figcaption><span>B02 · 010 · 7A429BDD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_011_2B3D5D41.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_011_2B3D5D41.jpg" alt="Фото мастерской B02 · 011 · 2B3D5D41"></a>
+<figcaption><span>B02 · 011 · 2B3D5D41</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_012_E6DE87F5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_012_E6DE87F5.jpg" alt="Фото мастерской B02 · 012 · E6DE87F5"></a>
+<figcaption><span>B02 · 012 · E6DE87F5</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_013_776F0C80.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_013_776F0C80.jpg" alt="Фото мастерской B02 · 013 · 776F0C80"></a>
+<figcaption><span>B02 · 013 · 776F0C80</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_014_8FB92F39.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_014_8FB92F39.jpg" alt="Фото мастерской B02 · 014 · 8FB92F39"></a>
+<figcaption><span>B02 · 014 · 8FB92F39</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_015_0E857C6B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_015_0E857C6B.jpg" alt="Фото мастерской B02 · 015 · 0E857C6B"></a>
+<figcaption><span>B02 · 015 · 0E857C6B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_016_496EB122.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_016_496EB122.jpg" alt="Фото мастерской B02 · 016 · 496EB122"></a>
+<figcaption><span>B02 · 016 · 496EB122</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_017_C45EE92C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_017_C45EE92C.jpg" alt="Фото мастерской B02 · 017 · C45EE92C"></a>
+<figcaption><span>B02 · 017 · C45EE92C</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_018_3CAC8EA4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_018_3CAC8EA4.jpg" alt="Фото мастерской B02 · 018 · 3CAC8EA4"></a>
+<figcaption><span>B02 · 018 · 3CAC8EA4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_019_4DD7119D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_019_4DD7119D.jpg" alt="Фото мастерской B02 · 019 · 4DD7119D"></a>
+<figcaption><span>B02 · 019 · 4DD7119D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_020_CC79E0E1.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_020_CC79E0E1.jpg" alt="Фото мастерской B02 · 020 · CC79E0E1"></a>
+<figcaption><span>B02 · 020 · CC79E0E1</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_021_C0689729.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_021_C0689729.jpg" alt="Фото мастерской B02 · 021 · C0689729"></a>
+<figcaption><span>B02 · 021 · C0689729</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_022_750333F4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_022_750333F4.jpg" alt="Фото мастерской B02 · 022 · 750333F4"></a>
+<figcaption><span>B02 · 022 · 750333F4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_023_BD18E2AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_023_BD18E2AE.jpg" alt="Фото мастерской B02 · 023 · BD18E2AE"></a>
+<figcaption><span>B02 · 023 · BD18E2AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_024_1AC19EF7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_024_1AC19EF7.jpg" alt="Фото мастерской B02 · 024 · 1AC19EF7"></a>
+<figcaption><span>B02 · 024 · 1AC19EF7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_025_9744D353.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_025_9744D353.jpg" alt="Фото мастерской B02 · 025 · 9744D353"></a>
+<figcaption><span>B02 · 025 · 9744D353</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_026_A6F959AE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_026_A6F959AE.jpg" alt="Фото мастерской B02 · 026 · A6F959AE"></a>
+<figcaption><span>B02 · 026 · A6F959AE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="2">
+<a href="assets/source/b02_027_AA943DA3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b02_027_AA943DA3.jpg" alt="Фото мастерской B02 · 027 · AA943DA3"></a>
+<figcaption><span>B02 · 027 · AA943DA3</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_001_F8C2811D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_001_F8C2811D.jpg" alt="Фото мастерской B03 · 001 · F8C2811D"></a>
+<figcaption><span>B03 · 001 · F8C2811D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_002_4A6F3FA5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_002_4A6F3FA5.jpg" alt="Фото мастерской B03 · 002 · 4A6F3FA5"></a>
+<figcaption><span>B03 · 002 · 4A6F3FA5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_003_6C852AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_003_6C852AC4.jpg" alt="Фото мастерской B03 · 003 · 6C852AC4"></a>
+<figcaption><span>B03 · 003 · 6C852AC4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_004_BE2D72C6.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_004_BE2D72C6.jpg" alt="Фото мастерской B03 · 004 · BE2D72C6"></a>
+<figcaption><span>B03 · 004 · BE2D72C6</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_005_019FCF9C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_005_019FCF9C.jpg" alt="Фото мастерской B03 · 005 · 019FCF9C"></a>
+<figcaption><span>B03 · 005 · 019FCF9C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_006_C3C379B8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_006_C3C379B8.jpg" alt="Фото мастерской B03 · 006 · C3C379B8"></a>
+<figcaption><span>B03 · 006 · C3C379B8</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_007_44F935EE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_007_44F935EE.jpg" alt="Фото мастерской B03 · 007 · 44F935EE"></a>
+<figcaption><span>B03 · 007 · 44F935EE</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_008_6DC3567F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_008_6DC3567F.jpg" alt="Фото мастерской B03 · 008 · 6DC3567F"></a>
+<figcaption><span>B03 · 008 · 6DC3567F</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_009_B95E989D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_009_B95E989D.jpg" alt="Фото мастерской B03 · 009 · B95E989D"></a>
+<figcaption><span>B03 · 009 · B95E989D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="3">
+<a href="assets/source/b03_010_21E031A2.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b03_010_21E031A2.jpg" alt="Фото мастерской B03 · 010 · 21E031A2"></a>
+<figcaption><span>B03 · 010 · 21E031A2</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_001_57648A56.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_001_57648A56.jpg" alt="Фото мастерской B04 · 001 · 57648A56"></a>
+<figcaption><span>B04 · 001 · 57648A56</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_002_3B0F8297.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_002_3B0F8297.jpg" alt="Фото мастерской B04 · 002 · 3B0F8297"></a>
+<figcaption><span>B04 · 002 · 3B0F8297</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_003_8C0C38BB.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_003_8C0C38BB.jpg" alt="Фото мастерской B04 · 003 · 8C0C38BB"></a>
+<figcaption><span>B04 · 003 · 8C0C38BB</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_004_80504575.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_004_80504575.jpg" alt="Фото мастерской B04 · 004 · 80504575"></a>
+<figcaption><span>B04 · 004 · 80504575</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_005_5545DD9A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_005_5545DD9A.jpg" alt="Фото мастерской B04 · 005 · 5545DD9A"></a>
+<figcaption><span>B04 · 005 · 5545DD9A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_006_65789627.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_006_65789627.jpg" alt="Фото мастерской B04 · 006 · 65789627"></a>
+<figcaption><span>B04 · 006 · 65789627</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_007_FE1CC100.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_007_FE1CC100.jpg" alt="Фото мастерской B04 · 007 · FE1CC100"></a>
+<figcaption><span>B04 · 007 · FE1CC100</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_008_FBDAFA35.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_008_FBDAFA35.jpg" alt="Фото мастерской B04 · 008 · FBDAFA35"></a>
+<figcaption><span>B04 · 008 · FBDAFA35</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_009_524382FE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_009_524382FE.jpg" alt="Фото мастерской B04 · 009 · 524382FE"></a>
+<figcaption><span>B04 · 009 · 524382FE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_010_ABCEB74A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_010_ABCEB74A.jpg" alt="Фото мастерской B04 · 010 · ABCEB74A"></a>
+<figcaption><span>B04 · 010 · ABCEB74A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_011_F068FDB7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_011_F068FDB7.jpg" alt="Фото мастерской B04 · 011 · F068FDB7"></a>
+<figcaption><span>B04 · 011 · F068FDB7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_012_4DAF0B05.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_012_4DAF0B05.jpg" alt="Фото мастерской B04 · 012 · 4DAF0B05"></a>
+<figcaption><span>B04 · 012 · 4DAF0B05</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_013_9CA573FF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_013_9CA573FF.jpg" alt="Фото мастерской B04 · 013 · 9CA573FF"></a>
+<figcaption><span>B04 · 013 · 9CA573FF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_014_50EE4965.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_014_50EE4965.jpg" alt="Фото мастерской B04 · 014 · 50EE4965"></a>
+<figcaption><span>B04 · 014 · 50EE4965</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_015_13D31E9B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_015_13D31E9B.jpg" alt="Фото мастерской B04 · 015 · 13D31E9B"></a>
+<figcaption><span>B04 · 015 · 13D31E9B</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_016_EB6F1443.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_016_EB6F1443.jpg" alt="Фото мастерской B04 · 016 · EB6F1443"></a>
+<figcaption><span>B04 · 016 · EB6F1443</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_017_EB83A19B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_017_EB83A19B.jpg" alt="Фото мастерской B04 · 017 · EB83A19B"></a>
+<figcaption><span>B04 · 017 · EB83A19B</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_018_C84A75B3.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_018_C84A75B3.jpg" alt="Фото мастерской B04 · 018 · C84A75B3"></a>
+<figcaption><span>B04 · 018 · C84A75B3</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_019_0B8ED4E7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_019_0B8ED4E7.jpg" alt="Фото мастерской B04 · 019 · 0B8ED4E7"></a>
+<figcaption><span>B04 · 019 · 0B8ED4E7</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="4">
+<a href="assets/source/b04_020_53C6705E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b04_020_53C6705E.jpg" alt="Фото мастерской B04 · 020 · 53C6705E"></a>
+<figcaption><span>B04 · 020 · 53C6705E</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_001_C39E3A59.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_001_C39E3A59.jpg" alt="Фото мастерской B05 · 001 · C39E3A59"></a>
+<figcaption><span>B05 · 001 · C39E3A59</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_002_1CDD3576.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_002_1CDD3576.jpg" alt="Фото мастерской B05 · 002 · 1CDD3576"></a>
+<figcaption><span>B05 · 002 · 1CDD3576</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_003_18B77ACF.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_003_18B77ACF.jpg" alt="Фото мастерской B05 · 003 · 18B77ACF"></a>
+<figcaption><span>B05 · 003 · 18B77ACF</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_004_BA7A0C64.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_004_BA7A0C64.jpg" alt="Фото мастерской B05 · 004 · BA7A0C64"></a>
+<figcaption><span>B05 · 004 · BA7A0C64</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_005_E70F2B91.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_005_E70F2B91.jpg" alt="Фото мастерской B05 · 005 · E70F2B91"></a>
+<figcaption><span>B05 · 005 · E70F2B91</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_006_43198AC4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_006_43198AC4.jpg" alt="Фото мастерской B05 · 006 · 43198AC4"></a>
+<figcaption><span>B05 · 006 · 43198AC4</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_007_A7D3C667.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_007_A7D3C667.jpg" alt="Фото мастерской B05 · 007 · A7D3C667"></a>
+<figcaption><span>B05 · 007 · A7D3C667</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_008_A0A9AC55.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_008_A0A9AC55.jpg" alt="Фото мастерской B05 · 008 · A0A9AC55"></a>
+<figcaption><span>B05 · 008 · A0A9AC55</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_009_FA26143F.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_009_FA26143F.jpg" alt="Фото мастерской B05 · 009 · FA26143F"></a>
+<figcaption><span>B05 · 009 · FA26143F</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="5">
+<a href="assets/source/b05_010_2900BEB5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b05_010_2900BEB5.jpg" alt="Фото мастерской B05 · 010 · 2900BEB5"></a>
+<figcaption><span>B05 · 010 · 2900BEB5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_001_F42F1493.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_001_F42F1493.jpg" alt="Фото мастерской B06 · 001 · F42F1493"></a>
+<figcaption><span>B06 · 001 · F42F1493</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_002_030E677D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_002_030E677D.jpg" alt="Фото мастерской B06 · 002 · 030E677D"></a>
+<figcaption><span>B06 · 002 · 030E677D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_003_D2248DFB.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_003_D2248DFB.jpg" alt="Фото мастерской B06 · 003 · D2248DFB"></a>
+<figcaption><span>B06 · 003 · D2248DFB</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_004_8F41B07D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_004_8F41B07D.jpg" alt="Фото мастерской B06 · 004 · 8F41B07D"></a>
+<figcaption><span>B06 · 004 · 8F41B07D</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_005_A87E805B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_005_A87E805B.jpg" alt="Фото мастерской B06 · 005 · A87E805B"></a>
+<figcaption><span>B06 · 005 · A87E805B</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_006_0BEF79ED.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_006_0BEF79ED.jpg" alt="Фото мастерской B06 · 006 · 0BEF79ED"></a>
+<figcaption><span>B06 · 006 · 0BEF79ED</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_007_23B7BB7D.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_007_23B7BB7D.jpg" alt="Фото мастерской B06 · 007 · 23B7BB7D"></a>
+<figcaption><span>B06 · 007 · 23B7BB7D</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_008_DC662F6A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_008_DC662F6A.jpg" alt="Фото мастерской B06 · 008 · DC662F6A"></a>
+<figcaption><span>B06 · 008 · DC662F6A</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_009_6164D2D5.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_009_6164D2D5.jpg" alt="Фото мастерской B06 · 009 · 6164D2D5"></a>
+<figcaption><span>B06 · 009 · 6164D2D5</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_010_4AE57B66.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_010_4AE57B66.jpg" alt="Фото мастерской B06 · 010 · 4AE57B66"></a>
+<figcaption><span>B06 · 010 · 4AE57B66</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_011_DC62AD18.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_011_DC62AD18.jpg" alt="Фото мастерской B06 · 011 · DC62AD18"></a>
+<figcaption><span>B06 · 011 · DC62AD18</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_012_CABDBA2A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_012_CABDBA2A.jpg" alt="Фото мастерской B06 · 012 · CABDBA2A"></a>
+<figcaption><span>B06 · 012 · CABDBA2A</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_013_E7306B8C.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_013_E7306B8C.jpg" alt="Фото мастерской B06 · 013 · E7306B8C"></a>
+<figcaption><span>B06 · 013 · E7306B8C</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_014_4BA8AB95.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_014_4BA8AB95.jpg" alt="Фото мастерской B06 · 014 · 4BA8AB95"></a>
+<figcaption><span>B06 · 014 · 4BA8AB95</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_015_86E3EF40.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_015_86E3EF40.jpg" alt="Фото мастерской B06 · 015 · 86E3EF40"></a>
+<figcaption><span>B06 · 015 · 86E3EF40</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_016_3F92BA76.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_016_3F92BA76.jpg" alt="Фото мастерской B06 · 016 · 3F92BA76"></a>
+<figcaption><span>B06 · 016 · 3F92BA76</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_017_24AB74CD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_017_24AB74CD.jpg" alt="Фото мастерской B06 · 017 · 24AB74CD"></a>
+<figcaption><span>B06 · 017 · 24AB74CD</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_018_0D55AF99.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_018_0D55AF99.jpg" alt="Фото мастерской B06 · 018 · 0D55AF99"></a>
+<figcaption><span>B06 · 018 · 0D55AF99</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_019_88877B03.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_019_88877B03.jpg" alt="Фото мастерской B06 · 019 · 88877B03"></a>
+<figcaption><span>B06 · 019 · 88877B03</span><small>1152×1536</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_020_E7FC65B8.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_020_E7FC65B8.jpg" alt="Фото мастерской B06 · 020 · E7FC65B8"></a>
+<figcaption><span>B06 · 020 · E7FC65B8</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_021_ECEA0E2E.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_021_ECEA0E2E.jpg" alt="Фото мастерской B06 · 021 · ECEA0E2E"></a>
+<figcaption><span>B06 · 021 · ECEA0E2E</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_022_40F134A4.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_022_40F134A4.jpg" alt="Фото мастерской B06 · 022 · 40F134A4"></a>
+<figcaption><span>B06 · 022 · 40F134A4</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_023_12EC77C7.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_023_12EC77C7.jpg" alt="Фото мастерской B06 · 023 · 12EC77C7"></a>
+<figcaption><span>B06 · 023 · 12EC77C7</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_024_50603D4A.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_024_50603D4A.jpg" alt="Фото мастерской B06 · 024 · 50603D4A"></a>
+<figcaption><span>B06 · 024 · 50603D4A</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_025_B8FD06AD.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_025_B8FD06AD.jpg" alt="Фото мастерской B06 · 025 · B8FD06AD"></a>
+<figcaption><span>B06 · 025 · B8FD06AD</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_026_B7F26056.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_026_B7F26056.jpg" alt="Фото мастерской B06 · 026 · B7F26056"></a>
+<figcaption><span>B06 · 026 · B7F26056</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_027_7A384291.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_027_7A384291.jpg" alt="Фото мастерской B06 · 027 · 7A384291"></a>
+<figcaption><span>B06 · 027 · 7A384291</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_028_899116AC.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_028_899116AC.jpg" alt="Фото мастерской B06 · 028 · 899116AC"></a>
+<figcaption><span>B06 · 028 · 899116AC</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_029_A4FF54BE.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_029_A4FF54BE.jpg" alt="Фото мастерской B06 · 029 · A4FF54BE"></a>
+<figcaption><span>B06 · 029 · A4FF54BE</span><small>1536×1152</small></figcaption>
+</figure>
+<figure class="photo-card" data-batch="6">
+<a href="assets/source/b06_030_E341971B.jpeg" target="_blank"><img loading="lazy" src="assets/thumbs/b06_030_E341971B.jpg" alt="Фото мастерской B06 · 030 · E341971B"></a>
+<figcaption><span>B06 · 030 · E341971B</span><small>1536×1152</small></figcaption>
+</figure>
+</div></div></section>
+
+<section id="claude"><div class="wrap"><div class="section-head"><h2>Готовый бриф для Claude Design</h2><div class="section-intro">Этот текст можно копировать отдельно, но он уже входит в пакет как <b>claude_design_brief.md</b>. Ключевая идея: сначала единая библиотека реальных объектов и одна master-scene, потом десять ракурсов.</div></div><pre class="prompt">ЗАДАЧА ДЛЯ CLAUDE DESIGN / 3D RECONSTRUCTION
+
+Создать единый цифровой двойник мастерской по фотобазе из этого пакета. Сначала построить asset library реальных объектов, затем — одну master-scene, и только после этого рендерить разные камеры.
+
+1. SOURCE OF TRUTH
+• Форма, пропорции и характер реальных станков, инструментов, крепежа и мебельной фурнитуры берутся из фотографий.
+• Не заменять старые реальные станки на абстрактные современные аналоги.
+• Разрешено «реставрировать»: очистить, убрать грязь/ржавчину, восстановить окраску и читаемость, но не менять тип объекта.
+• Если назначение детали неочевидно — моделировать геометрию, не придумывать функцию.
+
+2. ЧТО МОЖНО ПЕРЕСТРОИТЬ
+• Стены, пол, потолок, окна, двери, проводку, освещение, стеллажи и систему хранения.
+• Старые пластиковые тазы/рваные коробки заменить на добротные деревянные/металлические ящики и модульные контейнеры с аккуратной маркировкой.
+• Старую открытую электрику превратить в безопасную аккуратную систему, сохранив 220/380 и реальные потребности станков.
+
+3. АРХИТЕКТУРНЫЙ ВАЙБ
+• Швейцарское качество строительства, но не декоративное «шале».
+• Простор, высокий потолок, большие окна и верхний свет, много настоящего дневного света.
+• Светлая древесина, спокойные светлые стены, качественный бетон/камень/дерево, точные столярные детали.
+• Живые растения и цветы как небольшие акценты, а не ботанический интерьер.
+• Мастерская должна выглядеть дорогой, но реально рабочей: следы процесса допустимы, хаос и ветхость — нет.
+
+4. ОБЯЗАТЕЛЬНЫЕ УЗНАВАЕМЫЕ ЯКОРЯ
+• Стена с реальными пилами/ножовками.
+• Круглый настенный объект с ножницами/инструментом — превратить в узнаваемый визуальный знак мастерской, сохранив происхождение из реальной детали.
+• Чёрная сумка с котом — оставить как личную деталь.
+• Книги и картина, показанные/заявленные пользователем, должны перейти в финальную сцену без замены на случайный декор, когда их исходные фото будут добавлены.
+• Рабочие станки, весы, тиски и фирменные самодельные узлы — не прятать.
+
+5. ЛОГИКА ЗОН
+A — металлообработка/сверление/прессование;
+B — шлифовка и заточка;
+C — распил и работа с древесиной;
+D — ручная сборка и измерение;
+E — хранение мебельной фурнитуры и крепежа;
+F — фасовка/взвешивание/комплектование;
+G — тихий личный угол: кресло/диван, книги, сумка с котом, растение.
+
+6. НЕ ДЕЛАТЬ
+• тёмный «мужской лофт»;
+• киношную грязную гаражную эстетику;
+• рустик/шале с декоративными рогами и псевдостариной;
+• стерильную лабораторию или шоурум, где невозможно работать;
+• случайные современные инструменты, которых нет в source photos;
+• десять разных мастерских вместо одной сцены.
+
+7. РЕНДЕР-ПАКЕТ: 10 КАДРОВ ИЗ ОДНОЙ MASTER-SCENE
+01 Hero wide — вся мастерская, высокий потолок, окна, основные зоны читаются сразу.
+02 Machine wall — реальные сверлильные/прессовые станки, тиски, металлический экран.
+03 Saw wall — коллекция реальных пил и ручного инструмента как характер мастерской.
+04 Hardware library — красивые ящики, внутри реальные петли, пластины, шпильки, M8, крепёж.
+05 Assembly bench — ручная сборка, линейки, угольники, штангенциркуль, весы/заметки.
+06 Grinding zone — двухсторонний точильный станок и самодельный ременной механизм.
+07 Detail macro — квадратная монтажная пластина с центральной шпилькой + соседние реальные детали.
+08 Packaging / weighing — CAS-весы, маркированные партии фурнитуры, аккуратная упаковка.
+09 Personal corner — книги, картина, сумка с котом, растение, спокойный свет.
+10 Architectural wide — вид, который лучше всего объясняет объём, окна, высоту и качество новой мастерской.
+
+Ключевая проверка каждого рендера: зритель должен поверить, что это та же мастерская и те же инструменты после дорогой архитектурной реконструкции, а не новая выдуманная мастерская.</pre></div></section>
+
+<footer><div class="wrap"><b>Статус:</b> v0.5 — фотобаза неполная, пользователь сообщила, что отправлена примерно половина. Отсутствие объекта в этом пакете не означает, что его нет в реальной мастерской. Следующие пачки нужно добавлять в этот же source dossier, а не начинать концепт заново.</div></footer>
+<script>
+document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.archive-grid .photo-card').forEach(card=>{card.style.display=(f==='all'||card.dataset.batch===f)?'':'none'})}))
+</script></body></html>
