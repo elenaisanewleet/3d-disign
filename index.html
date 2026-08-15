@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Мастерская папы — source dossier v1.0</title>
+<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Мастерская папы — source dossier v1.1</title>
 <style>
 :root{--paper:#f4f1e8;--ink:#171714;--muted:#6f6b62;--line:#d9d3c5;--wood:#b9854f;--deep:#26231f;--card:#fbfaf5;--accent:#5d6a50}
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
@@ -19,8 +19,35 @@ pre.prompt{white-space:pre-wrap;margin:0;font:14px/1.55 ui-monospace,SFMono-Regu
 footer{padding:42px 0 80px;color:var(--muted);font-size:14px}
 @media(max-width:1000px){.hero{grid-template-columns:1fr}.hero-image{min-height:65vh;order:-1}.hero-copy{padding:44px 28px 60px}.section-head,.batch-header,.grid2,.split{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.ref-grid{grid-template-columns:1fr 1fr}.ref-grid .ref-card:first-child{grid-column:1/-1}.photo-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.wrap{padding:0 16px}section{padding:60px 0}.grid3,.note-grid,.ref-grid{grid-template-columns:1fr}.photo-grid{grid-template-columns:repeat(2,1fr)}.hero-image{min-height:50vh}h1{font-size:52px}}
-</style></head><body><nav class="topnav"><a href="#brief">Бриф</a><a href="#references">Референс</a><a href="#analysis">Анализ</a><a href="#spatial">Планировка</a><a href="#batches">Пачки</a><a href="#curated">Категории</a><a href="#archive">Все фото</a><a href="#claude">Claude / 3D</a></nav>
-<header class="hero"><div class="hero-copy"><div class="kicker">WORKSHOP DIGITAL TWIN · SOURCE DOSSIER V1.0</div><h1>Не придумать новую мастерскую. Перестроить его.</h1><p class="lead">Полная фотобаза реальной мастерской: 193 исходных фото, 13 последовательных пачек, инвентарь, пространственная схема трёх помещений, внешний контекст и единый бриф на 3D-реконструкцию.</p><div class="meta"><span class="pill">193 исходных фото</span><span class="pill">13 пачек</span><span class="pill">3 AI-референса</span><span class="pill">фотобаза завершена</span><span class="pill">source of truth: реальные объекты</span></div></div><div aria-label="Главный референс будущей мастерской" class="hero-image"></div></header>
+
+/* V1.1 DEEP RESEARCH LAYER */
+.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.evidence-card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:24px}
+.evidence-card .status{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 9px;background:#e8ece3;margin-bottom:12px}
+.evidence-card blockquote{margin:0 0 14px;padding-left:16px;border-left:3px solid var(--accent);font-size:18px}
+.evidence-card .analysis{color:var(--muted);font-size:14px}
+.p0-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.p0-card{background:#221f1a;color:#f4f1e8;border-radius:16px;padding:20px;border:1px solid #4a453d}
+.p0-card b{display:block;font-size:16px;margin-bottom:6px}
+.workflow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:22px 0}
+.workflow span{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:999px;font-size:13px}
+.workflow i{font-style:normal;color:var(--muted)}
+.registry-table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.registry-table th,.registry-table td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:13px}
+.registry-table th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#f7f4ec}
+.registry-table tr:last-child td{border-bottom:0}
+.doclinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.doclinks a{text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:13px;color:var(--ink)}
+.rulebox{border:1px solid var(--line);border-radius:18px;padding:26px;background:#fff;margin-top:18px}
+.rulebox strong{font-size:24px;letter-spacing:-.02em}
+.research-band{background:#1d211a;color:#f4f1e8}
+.research-band .section-intro{color:#cfd6c5}
+.research-band .card{color:var(--ink)}
+.research-band .rulebox{color:var(--ink)}
+@media(max-width:900px){.evidence-grid,.p0-grid{grid-template-columns:1fr}.registry-table{display:block;overflow:auto}}
+
+</style></head><body><nav class="topnav"><a href="#brief">Бриф</a><a href="#history">История решений</a><a href="#capabilities">Что делает мастер</a><a href="#registry">Реестр объектов</a><a href="#references">Референс</a><a href="#analysis">Анализ</a><a href="#spatial">Планировка</a><a href="#batches">Пачки</a><a href="#curated">Категории</a><a href="#archive">Все фото</a><a href="#research">Исследование</a><a href="#claude">Claude / 3D</a></nav>
+<header class="hero"><div class="hero-copy"><div class="kicker">WORKSHOP DIGITAL TWIN · SOURCE DOSSIER V1.1</div><h1>Не придумать новую мастерскую. Перестроить его.</h1><p class="lead">Полная фотобаза реальной мастерской: 193 исходных фото, 13 последовательных пачек, инвентарь, пространственная схема трёх помещений, внешний контекст и единый бриф на 3D-реконструкцию.</p><div class="meta"><span class="pill">193 исходных фото</span><span class="pill">13 пачек</span><span class="pill">3 AI-референса</span><span class="pill">фотобаза завершена</span><span class="pill">source of truth: реальные объекты</span></div></div><div aria-label="Главный референс будущей мастерской" class="hero-image"></div></header>
 <section id="brief"><div class="wrap"><div class="section-head"><h2>Исходная идея</h2><div class="section-intro">Это не публичный лендинг мастерской, а рабочее досье для Claude Design / 3D. Главная задача — не потерять ни один реальный объект и при этом полностью изменить архитектурную оболочку пространства.</div></div><div class="quote">Так я отфоткала всю мастерскую папину по деталям с разных ракурсов — всё, что у него есть: детали, коробки, инструменты, станки, разметки, а для вайба ещё картину и книги.
 
 Задача серьёзная: тщательно проанализировать фотографии и понять задачу мастера — что он делает, что может делать, какая у него основная работа, функции, исключительные особенности и таланты.
@@ -34,6 +61,58 @@ footer{padding:42px 0 80px;color:var(--muted);font-size:14px}
 Но почерк мастера должен сохраниться. Картину и книги оставить те же. Сумку с котом оставить. Ножницы/круглый объект на стене хочу превратить в узнаваемый центральный знак — чуть чище и красивее, но аутентичный.
 
 По сути мы создаём почти 3D-визуализацию мастерской с определением деятельности и возможностей мастера. Все будущие кадры должны быть из одной и той же мастерской, а не десятью несвязанными AI-интерьерами.</div></div></section>
+<!-- V1.1 DEEP RESEARCH LAYER START -->
+<section id="history"><div class="wrap">
+<div class="section-head"><h2>История решений</h2><div class="section-intro">Переписка — часть source of truth. Здесь оставлены только те реплики, которые меняют обязательность объектов, пространственную логику или визуальные границы проекта.</div></div>
+<div class="evidence-grid">
+<article class="evidence-card"><span class="status">MUST KEEP</span><blockquote>«Я хочу в итоге сохранить все элементы железки инструменты все все ничего не забывая…»</blockquote><div class="analysis"><b>Вывод:</b> оболочка может быть новой. Инвентарь — нет.</div></article>
+<article class="evidence-card"><span class="status">SPATIAL EVIDENCE</span><blockquote>«Я шла и фоткала всё очень последовательно… как будто мы просто гуляем и внимательно всё смотрим».</blockquote><div class="analysis"><b>Вывод:</b> порядок фото несёт пространственную информацию; это маршрут через мастерскую.</div></article>
+<article class="evidence-card"><span class="status">P0 / IDENTITY</span><blockquote>«Вот эти ножницы на диске… мне показалось интересным элементом потом для переноса в ИИ-мастерскую».</blockquote><div class="analysis"><b>Вывод:</b> сохранить реальный объект; только потом использовать силуэт как вторичный мотив.</div></article>
+<article class="evidence-card"><span class="status">PROCESS</span><blockquote>«Пока не рисуй пока собирай фотографии и анализируй каждую пачку что ты видишь и клади в память».</blockquote><div class="analysis"><b>Вывод:</b> сначала анализ и asset library, потом master-scene и рендер.</div></article>
+<article class="evidence-card"><span class="status">NO-GO</span><blockquote>«Ты ушла вообще во что-то другое и это выглядит очень неуютно и неестественно».</blockquote><div class="analysis"><b>Вывод:</b> не тёмный loft / garage / man cave; возвращаемся к свету, дереву, воздуху и саду.</div></article>
+<article class="evidence-card"><span class="status">P0 / PERSONAL</span><blockquote>«Мне нравится деталь сумки с котом».</blockquote><div class="analysis"><b>Вывод:</b> конкретная сумка остаётся asset master-scene.</div></article>
+<article class="evidence-card"><span class="status">P0 / ART</span><blockquote>«Вот тут смотри картину. Ее надо будет забрать на стену в ии мастерскую».</blockquote><div class="analysis"><b>Вывод:</b> именно эта картина должна появиться на стене финальной сцены.</div></article>
+<article class="evidence-card"><span class="status">ROOM MAP</span><blockquote>«Это огромная комната входная, дальше идет та основная… потом из нее выход в небольшую там где склад и розовый диван».</blockquote><div class="analysis"><b>Вывод:</b> ROOM 1 → ROOM 2 → ROOM 3 — базовая последовательность.</div></article>
+</div>
+<div class="doclinks"><a href="conversation_evidence.md">conversation_evidence.md</a><a href="deep_research.md">deep_research.md</a></div>
+</div></section>
+
+<section id="capabilities"><div class="wrap">
+<div class="section-head"><h2>Как работает мастер</h2><div class="section-intro">Глубокий анализ показывает не просто «мебельщика», а мастера, который понимает мебель через конструкцию и решает задачу на уровне детали, посадки и соединения. Всё, что не подтверждено пользователем, остаётся гипотезой.</div></div>
+<div class="rulebox"><strong>Мастерская существует на уровне конструкции.</strong><p>Деталь → измерение → фиксация → отверстие/обработка → резьба/посадка → подгонка → соединение → узел → готовый предмет.</p></div>
+<div class="workflow"><span>Понять задачу</span><i>→</i><span>Найти / подобрать деталь</span><i>→</i><span>Измерить</span><i>→</i><span>Зафиксировать</span><i>→</i><span>Просверлить / обработать / запрессовать</span><i>→</i><span>Подогнать</span><i>→</i><span>Собрать</span><i>→</i><span>Проверить</span><i>→</i><span>Повторить серией / скомплектовать</span></div>
+<div class="grid3">
+<div class="card"><h3>Подтверждено</h3><p>Основной профиль — мебельная фурнитура. Пользователь также подтвердила собственные предметы мастера: стул, стол и скамейка.</p></div>
+<div class="card"><h3>Видно по фотобазе</h3><p>Большие партии крепежа, сверление/прессование, ручная доводка, распил, заточка, измерение, материалы и самодельная оснастка.</p></div>
+<div class="card"><h3>Главный талант</h3><p>Соединять несколько способов обработки вокруг одной реальной задачи. Самодельная оснастка показывает не только чем он работает, но и как он думает.</p></div>
+</div>
+</div></section>
+
+<section id="registry"><div class="wrap">
+<div class="section-head"><h2>Реестр 3D assets</h2><div class="section-intro">Claude нельзя отдавать формулировку «старые станки». Каждый ключевой объект получает отдельную карточку, confidence и правило fidelity. Полный реестр — в asset_registry.md.</div></div>
+<div class="p0-grid">
+<div class="p0-card"><b>P0 · Картина</b>Именно эта, на стене. Не заменять похожей.</div>
+<div class="p0-card"><b>P0 · Ножницы на круге</b>Реальные ножницы + реальный круг + исходная логика подвеса.</div>
+<div class="p0-card"><b>P0 · Сумка с котом</b>Конкретный personal asset.</div>
+<div class="p0-card"><b>P0 · Стена пил</b>Композиция реальных ножовок/пил, а не новый одинаковый набор.</div>
+<div class="p0-card"><b>P0 · Самодельный привод</b>Копировать конструкцию; не заменять магазинным станком.</div>
+<div class="p0-card"><b>P0 · Пространство</b>ROOM 1 → ROOM 2 → ROOM 3 + связь с реальным садом.</div>
+</div>
+<div style="overflow:auto;margin-top:24px"><table class="registry-table">
+<thead><tr><th>Asset</th><th>Confidence</th><th>Model rule</th><th>Функция / статус</th></tr></thead>
+<tbody>
+<tr><td>Ручной рычажный пресс</td><td>CONFIRMED</td><td>High fidelity, не заменять</td><td>Повторяемая операция; exact process unresolved</td></tr>
+<tr><td>Vertical drill press</td><td>CONFIRMED</td><td>High fidelity</td><td>Сверление / точная подача</td></tr>
+<tr><td>Красно-зелёная powered station</td><td>Geometry confirmed</td><td>Very high fidelity</td><td>Dedicated jig; exact operation unresolved</td></tr>
+<tr><td>Bench grinder</td><td>CONFIRMED</td><td>High fidelity</td><td>Заточка / доводка</td></tr>
+<tr><td>Самодельный belt-driven unit</td><td>Geometry confirmed</td><td>Very high fidelity</td><td>Custom tooling; exact process unresolved</td></tr>
+<tr><td>Торцовочная/усовочная пила</td><td>CONFIRMED</td><td>High fidelity</td><td>Поперечный/угловой распил</td></tr>
+<tr><td>CAS-весы</td><td>Brand family confirmed</td><td>Не придумывать модель</td><td>Взвешивание; комплектование/счёт — likely</td></tr>
+<tr><td>M8 / hanger bolts / plates / hinges</td><td>Mixed confirmed + likely</td><td>Геометрию сохранять</td><td>Мебельные соединения; exact SKU/use cautious</td></tr>
+</tbody></table></div>
+<div class="doclinks"><a href="asset_registry.md">Открыть полный asset_registry.md</a></div>
+</div></section>
+
 <section id="references"><div class="wrap"><div class="section-head"><h2>Референс направления</h2><div class="section-intro">Именно это направление пользователь выбрала после неудачных более тёмных/неуютных вариантов: больше объёма, окон и натурального света; высокий потолок; спокойное светлое дерево; растения; ощущение дорогого швейцарского качества строительства.</div></div><div class="ref-grid"><figure class="ref-card"><img alt="AI reference" src="assets/reference/preferred-01-high-ceiling-windows.png"/><figcaption>Главный референс: высокий потолок, много окон, естественный свет, светлое дерево, простор.</figcaption></figure><figure class="ref-card"><img alt="AI reference" src="assets/reference/preferred-02-consistent-scene.png"/><figcaption>Второй референс: та же архитектурная логика, спокойный дорогой цех, рабочие зоны остаются рабочими.</figcaption></figure><figure class="ref-card"><img alt="AI reference" src="assets/reference/preferred-03-cozy-tools-plants.png"/><figcaption>Третий референс: больше домашнего тепла, растений и личных деталей; использовать дозированно, без декоративности.</figcaption></figure></div><div class="split" style="margin-top:26px"><div class="dos"><h3>Сохранить из реальной мастерской</h3><ul class="cleanlist"><li>геометрию станков и самодельных узлов;</li><li>реальные типы мебельной фурнитуры и крепежа;</li><li>стену пил и характерные измерительные инструменты;</li><li>весы, тиски, рабочие столы как функции;</li><li>личные узнаваемые маркеры — сумка с котом, книги, картина, круглый настенный знак;</li><li>ощущение рабочего, прожитого места.</li></ul></div><div class="donts"><h3>Полностью заменить</h3><ul class="cleanlist"><li>обшарпанные стены/пол/потолок;</li><li>старую открытую проводку и случайные удлинители;</li><li>рваные коробки, тазы и хаотичную тару;</li><li>случайное хранение материалов;</li><li>грязь, пыль, ржавчину и визуальный шум;</li><li>низкое качество света и тесноту.</li></ul></div></div></div></section>
 <section id="analysis"><div class="wrap"><div class="section-head"><h2>Что видно по работе мастера</h2><div class="section-intro">Ниже отделены подтверждённый контекст, наблюдаемая фотобаза и осторожные гипотезы. Для 3D это важно: не превращать визуальную гипотезу в выдуманный бизнес-процесс.</div></div><div class="card" style="font-size:18px;white-space:pre-wrap">По совокупности фотографий и контекста это выглядит не как мастерская одного типа операции, а как компактное ремесленно-производственное пространство вокруг мебельной фурнитуры. В нём совмещаются хранение больших партий крепежа, подбор и сборка узлов, сверление/прессование, шлифовка и заточка, точный распил дерева, ручная подгонка, измерение и, вероятно, комплектование/фасовка деталей.
 
@@ -1955,6 +2034,22 @@ footer{padding:42px 0 80px;color:var(--muted);font-size:14px}
 <a href="assets/source/b13_007_3E15734A.jpeg" target="_blank"><img alt="Фото мастерской B13 · 007 · 3E15734A" loading="lazy" src="assets/thumbs/b13_007_3E15734A.jpg"/></a>
 <figcaption><span>B13 · 007 · 3E15734A</span><small>1152×1536</small></figcaption>
 </figure></div></div></section>
+<section id="research" class="research-band"><div class="wrap">
+<div class="section-head"><h2>Deep research</h2><div class="section-intro">Внешнее исследование используется не для замены реальности, а для профессионально правдоподобного upgrade: хранение, свет, пылеудаление, электрика, материалы и эргономика.</div></div>
+<div class="grid2">
+<div class="card"><h3>Evidence</h3><p>Реальные станки, оснастка, фурнитура, пилы, книги, картина, сумка, ножницы на круге, made-by-master furniture и последовательность помещений. Это нельзя заменять.</p></div>
+<div class="card"><h3>Inspiration / NEW infrastructure</h3><p>Большие окна, высокий потолок, светлое дерево, task lighting, modular storage, material rack, безопасная электрика, cable management, dust extraction. Это можно добавить, но нельзя выдавать за исходный inventory.</p></div>
+</div>
+<div class="rulebox"><strong>«Швейцария» = качество, а не chalet.</strong><p>Точность строительства, хорошие пропорции, свет, натуральное дерево, порядок, ясность функций и долговечные детали. Не luxury lodge, не man cave, не тёмный industrial.</p></div>
+<div class="grid3" style="margin-top:18px">
+<div class="card"><h3>Хранение</h3><p>Не прятать всю фурнитуру. Часть закрыта, часть — в прозрачных/фронтальных bins, часть — в неглубоких деревянных ящиках. Характерные группы остаются видимыми.</p></div>
+<div class="card"><h3>Сад</h3><p>Сильнее нескольких десятков горшков — большие окна, которые кадрируют реальную зелень и мягкий дневной свет.</p></div>
+<div class="card"><h3>Инженерия</h3><p>Dust extraction, новая безопасная электрика и task light допустимы только как новый infrastructure layer.</p></div>
+</div>
+<div class="doclinks"><a href="deep_research.md">Полный deep_research.md</a><a href="research_sources.md">research_sources.md</a><a href="conversation_evidence.md">conversation evidence</a><a href="asset_registry.md">asset registry</a></div>
+</div></section>
+<!-- V1.1 DEEP RESEARCH LAYER END -->
+
 <section id="claude"><div class="wrap"><div class="section-head"><h2>Готовый бриф для Claude Design</h2><div class="section-intro">Финальный бриф обновлён после завершения обхода: теперь он содержит <b>193 фото, 3 помещения, внешний контекст, картину и книги</b>. Ключевая идея остаётся прежней: одна asset library и одна master-scene.</div></div><pre class="prompt">ЗАДАЧА ДЛЯ CLAUDE DESIGN / 3D RECONSTRUCTION
 
 Создать единый цифровой двойник мастерской по фотобазе из этого пакета. Сначала построить asset library реальных объектов, затем — одну master-scene, и только после этого рендерить разные камеры.

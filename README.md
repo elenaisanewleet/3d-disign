@@ -1,4 +1,4 @@
-# Workshop source dossier v1.0
+# Workshop source dossier v1.1
 
 Откройте `index.html` в браузере или задеплойте корень папки на Vercel.
 
@@ -22,3 +22,21 @@
 - расширенный 3D render brief.
 
 Статус: **фотобаза завершена**.
+
+
+<!-- V1.1 README LAYER -->
+
+## Что добавлено в v1.1 — conversation + deep research layer
+
+- `conversation_evidence.md` — ключевые поворотные реплики из истории проекта как evidence;
+- `deep_research.md` — функциональный анализ + Evidence vs Inspiration;
+- `asset_registry.md` — реестр машин, инструментов, фурнитуры, материалов, P0-якорей и confidence;
+- `research_sources.md` — внешние источники только для отраслевого контекста и infrastructure recommendations;
+- на `index.html` добавлены разделы **История решений**, **Как работает мастер**, **Реестр 3D assets**, **Deep research**;
+- `claude_design_brief.md` усилен P0-ограничениями, confidence hierarchy и обязательным preflight-анализом.
+
+### Важно
+
+193 исходных фото, `assets/source`, `assets/thumbs`, `assets/contact` и их порядок **не меняются**.
+
+> Не проектировать мастерскую для абстрактного мебельщика. Сначала понять этого конкретного мастера, затем построить лучшую версию именно его мастерской.
